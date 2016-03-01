@@ -1,7 +1,5 @@
 package control;
 
-import javax.swing.Timer;
-
 import model.*;
 import view.Frame;
 
@@ -45,23 +43,23 @@ public class Controller {
 		
 		//Bounce on the left border?
 		if (ball.getX() <= 0) {
-			ball.setX(ball.getX() + ball.getSPEED());
-			ball.doRightLeftBounceLogic();
+			ball.setX(ball.getX() + ball.getSpeed());
+			doRightLeftBounceLogic();
 		}
 		//Bounce on the right border?
 		else if (ball.getX() +ball.getSize() >= panelWidth) {
-			ball.setX(ball.getX() - ball.getSPEED());
-			ball.doRightLeftBounceLogic();
+			ball.setX(ball.getX() - ball.getSpeed());
+			doRightLeftBounceLogic();
 		}
 		//Bounce on the top border?
 		else if (ball.getY() <= 0) {
-			ball.setY(ball.getY() + ball.getSPEED());
-			ball.doTopBottomBounceLogic();
+			ball.setY(ball.getY() + ball.getSpeed());
+			doTopBottomBounceLogic();
 		}
 		//Bounce on the bar?
 		else if (ball.intersects(bar)) {
-			ball.setY(ball.getY() - ball.getSPEED());
-			ball.doBarBounceLogic(bar);
+			ball.setY(ball.getY() - ball.getSpeed());
+			doBarBounceLogic(bar);
 		}
 		//Bounce on the bottom border?
 		else if (ball.getY()+ball.getSize() >= panelHeight) {
@@ -74,30 +72,30 @@ public class Controller {
 			if (brick != null) {
 				 //Brick and Ball intersecting at an edge
 				if (ball.getMiddleX() > brick.getX() && ball.getMiddleX() < brick.getX()+brick.getWidth()) {
-					ball.doTopBottomBounceLogic();
+					doTopBottomBounceLogic();
 				}
 				else if (ball.getMiddleY() > brick.getY() && ball.getMiddleY() < brick.getY()+brick.getHeight()) {
-					ball.doRightLeftBounceLogic();
+					doRightLeftBounceLogic();
 				}
 				 //Brick and Ball intersecting at a corner
 				else {
 					 //LinksOben
 					if (ball.getMiddleX() < brick.getX() && ball.getMiddleY() < brick.getY()) {
-						ball.doBottomLeftCornerBouncingLogic(brick.getX(), brick.getY());
+						doBottomLeftCornerBouncingLogic(brick.getX(), brick.getY());
 						// TODO just placeholder
 					}
 					 //LinksUnten
 					else if (ball.getMiddleX() < brick.getX() && ball.getMiddleY() > brick.getY()+brick.getHeight()) {
-						ball.doBottomLeftCornerBouncingLogic(brick.getX(), brick.getY()+brick.getHeight());
+						doBottomLeftCornerBouncingLogic(brick.getX(), brick.getY()+brick.getHeight());
 					}
 					 //RechtsOben
 					else if (ball.getMiddleX() > brick.getX()+brick.getWidth() && ball.getMiddleY() < brick.getY()) {
-						ball.doBottomRightCornerBouncingLogic(brick.getX()+brick.getWidth(), brick.getY());
+						doBottomRightCornerBouncingLogic(brick.getX()+brick.getWidth(), brick.getY());
 						// TODO just placeholder
 					}
 					 //RechtsUnten
 					else if (ball.getMiddleX() > brick.getX()+brick.getWidth() && ball.getMiddleY() > brick.getY()+brick.getHeight()) {
-						ball.doBottomRightCornerBouncingLogic(brick.getX()+brick.getWidth(), brick.getY()+brick.getHeight());
+						doBottomRightCornerBouncingLogic(brick.getX()+brick.getWidth(), brick.getY()+brick.getHeight());
 					}
 				}
 				brick.setVisible(false);
@@ -105,6 +103,60 @@ public class Controller {
 		}
 		
 		ball.setAngle(ball.getAngle() % 360);
+	}
+	
+	//TODO What does this method do?
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 */
+	public void doBottomLeftCornerBouncingLogic(int x, int y) {
+		double atan = Math.toDegrees(Math.atan(absValue(ball.getMiddleY() - y) / absValue(ball.getMiddleX() - x)));
+		ball.setAngle(ball.getAngle() + 2 * absValue(360 - atan - ball.getAngle()) + 180); // <-- falsch!! // TODO
+	}
+	/**
+	 * This method calculates the angle for the ball after bouncing from the sides.
+	 */
+	public void doRightLeftBounceLogic() {
+		ball.setAngle(ball.getAngle() - (ball.getAngle()-270)*2);
+	}
+	/**
+	 * This method calculates the angle for the ball after bouncing from the top and bottom.
+	 */
+	public void doTopBottomBounceLogic() {
+		ball.setAngle(ball.getAngle() - (ball.getAngle()-180)*2);
+	}
+	
+	
+	/**
+	 * This Method calculates the angle with the ball bounces from the bar, depending on the point hit.
+	 * @param bar - The Object of the bar used.
+	 */
+	public void doBarBounceLogic(Bar bar) {
+		double DeltaZ = (ball.getMiddleX()) - (bar.getX());
+		if (DeltaZ < 0) { DeltaZ = 0;}
+		else if (DeltaZ > bar.getWidth()) { DeltaZ = bar.getWidth();}
+		double OnePer = (((double)bar.getWidth())/100);
+		double z = OnePer * DeltaZ /100;
+		ball.setAngle(190+z*160.0);
+	}
+	
+	
+	//TODO What does this method do?
+	/**
+	 *
+	 * @param x
+	 * @param y
+	 */
+	public void doBottomRightCornerBouncingLogic(int x, int y) {
+		double atan = Math.toDegrees(Math.atan(absValue(ball.getMiddleY() - y) / absValue(ball.getMiddleX() - x)));
+		ball.setAngle(ball.getAngle() - 2 * absValue(360 - atan - ball.getAngle()) + 180); // <-- falsch!! // TODO
+	}
+	
+	private double absValue(double x) {
+		if (x < 0) {return x*(-1);}
+		return x;
 	}
 	
 	/**
