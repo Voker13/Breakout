@@ -20,7 +20,7 @@ public class Controller {
 	//TODO Empty constructor? maybe make it private
 	public Controller() {}
 	/**
-	 * Initialises the game, adding a bar, a ball and the bricks to the field.
+	 * Initializes the game, adding a bar, a ball and the bricks to the field.
 	 */
 	public void initialize() {
 		bar = new Bar(panelWidth, panelHeight);
