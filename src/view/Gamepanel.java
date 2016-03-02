@@ -4,19 +4,18 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
-import javax.swing.Timer;
-
-import control.Actionlistener;
 import control.Controller;
+import control.GameThread;
 import control.Mouselistener;
 import control.Mousemotionlistener;
 import model.Ball;
 import model.Bar;
 import model.Grid;
 
+
 public class Gamepanel extends JPanel {	
-	
-	private Timer t;
+
+	private GameThread thread;
 	private Controller controller;
 	
 	public Gamepanel(Controller controller) {
@@ -27,8 +26,9 @@ public class Gamepanel extends JPanel {
 		this.addMouseListener(new Mouselistener(controller));
 		this.addMouseMotionListener(new Mousemotionlistener(controller));
 		
-		t = new Timer(5,new Actionlistener(controller));
-		t.start();
+		
+		thread = new GameThread(controller);
+		thread.start();
 	}
 	
 	

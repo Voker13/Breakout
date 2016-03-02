@@ -16,6 +16,7 @@ public class Controller {
 	private int lifes = 3;
 	private boolean running = false;
 	private Frame frame;
+	private GameThread thread;
 	
 	//TODO Empty constructor? maybe make it private
 	public Controller() {}
@@ -28,6 +29,8 @@ public class Controller {
 		grid = new Grid();
 		grid.fill();
 		frame = new Frame(this);
+		thread = new GameThread(this);
+		thread.start();
 	}
 	/**
 	 * Stops the ball and resets the lives to 3.
