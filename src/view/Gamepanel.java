@@ -2,7 +2,6 @@ package view;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-
 import javax.swing.JPanel;
 import control.Controller;
 import control.GameThread;
@@ -12,12 +11,19 @@ import model.Ball;
 import model.Bar;
 import model.Grid;
 
-
 public class Gamepanel extends JPanel {	
-
+	/**
+	 * This gamepanel's thread
+	 */
 	private GameThread thread;
+	/**
+	 * This gamepanel's controller
+	 */
 	private Controller controller;
-	
+	/**
+	 * Creates a new instance of this class with the given controller and the standard properties.
+	 * @param controller
+	 */
 	public Gamepanel(Controller controller) {
 		this.controller = controller;
 		this.setBounds(0, controller.getOptionpanelHeight() , controller.getPanelWidth(), controller.getPanelHeight());
@@ -25,7 +31,6 @@ public class Gamepanel extends JPanel {
 		
 		this.addMouseListener(new Mouselistener(controller));
 		this.addMouseMotionListener(new Mousemotionlistener(controller));
-		
 		
 		thread = new GameThread(controller);
 		thread.start();

@@ -5,12 +5,17 @@ import java.awt.event.MouseListener;
 
 public class Mouselistener implements MouseListener{
 
+	/**
+	 * This object's controller
+	 */
 	private Controller controller;
-	
+	/**
+	 * Initializes a new instance of this class with the given controller.
+	 * @param controller
+	 */
 	public Mouselistener(Controller controller) {
 		this.controller = controller;
 	}	
-	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		if (!controller.isRunning()) {
@@ -28,7 +33,7 @@ public class Mouselistener implements MouseListener{
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
+		// TODO Maybe pause game here?
 		
 	}
 

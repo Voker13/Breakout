@@ -130,8 +130,6 @@ public class Controller {
 	public void doTopBottomBounceLogic() {
 		ball.setAngle(ball.getAngle() - (ball.getAngle()-180)*2);
 	}
-	
-	
 	/**
 	 * This Method calculates the angle with the ball bounces from the bar, depending on the point hit.
 	 * @param bar - The Object of the bar used.
@@ -144,8 +142,6 @@ public class Controller {
 		double z = OnePer * DeltaZ /100;
 		ball.setAngle(190+z*160.0);
 	}
-	
-	
 	//TODO What does this method do?
 	/**
 	 *
@@ -156,12 +152,14 @@ public class Controller {
 		double atan = Math.toDegrees(Math.atan(absValue(ball.getMiddleY() - y) / absValue(ball.getMiddleX() - x)));
 		ball.setAngle(ball.getAngle() - 2 * absValue(360 - atan - ball.getAngle()) + 180); // <-- falsch!! // TODO
 	}
-	
+	/**
+	 * This method calculates and returns the absolute value of the given number.
+	 * @param x
+	 */
 	private double absValue(double x) {
 		if (x < 0) {return x*(-1);}
 		return x;
 	}
-	
 	/**
 	 * Returns the optionpanel's height.
 	 * @return

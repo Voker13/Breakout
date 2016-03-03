@@ -4,10 +4,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Actionlistener implements ActionListener {
-    
+    /**
+     * This objects controller
+     */
     private Controller controller;
 	
-    
+   /**
+    * Creates a new instance of this class with the given controller.
+    * @param controller
+    */
    public Actionlistener(Controller controller) {
 	   this.controller = controller;
    }
