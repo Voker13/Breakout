@@ -18,7 +18,9 @@ public class Controller {
 	private Frame frame;
 	private GameThread thread;
 	
-	public Controller() {}
+	public Controller() {
+		
+	}
 	/**
 	 * Initializes the game, adding a bar, a ball and the bricks to the field.
 	 */

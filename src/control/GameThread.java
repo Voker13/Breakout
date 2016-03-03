@@ -3,7 +3,7 @@ package control;
 public class GameThread extends Thread {
 
 	private Controller controller;
-	private int FPS = 25;
+	private int FPS = 60;
 	
 	public GameThread(Controller controller) {
 		this.controller = controller;
@@ -35,7 +35,7 @@ public class GameThread extends Thread {
 					Thread.sleep(sleepTime);
 				}
 			} catch (InterruptedException ex) {
-
+				ex.printStackTrace();
 			}
 		}
 	}

@@ -32,5 +32,17 @@ public class Frame extends JFrame{
 	    this.add(optionpanel);
 	    
 	}
+	public Gamepanel getGamepanel() {
+		return gamepanel;
+	}
+	public void setGamepanel(Gamepanel gamepanel) {
+		this.gamepanel = gamepanel;
+	}
+	public Optionpanel getOptionpanel() {
+		return optionpanel;
+	}
+	public void setOptionpanel(Optionpanel optionpanel) {
+		this.optionpanel = optionpanel;
+	}
 	
 }

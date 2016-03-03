@@ -11,24 +11,12 @@ import javax.swing.Timer;
 import control.Controller;
 
 public class Optionpanel extends JPanel {
-	/**
-	 * This objects timer
-	 */
-	Timer t;
+
 	/**
 	 * This objects controller
 	 */
 	private Controller controller;
-	//TODO What exactly does this actionListener?
-	/**
-	 * 
-	 */
-	ActionListener AL = new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			repaint();
-		};
-	};
+
 	/**
 	 * Creates a new instance of this class with the given controller and the standard properties.
 	 * @param controller
@@ -37,9 +25,6 @@ public class Optionpanel extends JPanel {
 		this.controller = controller;
 		this.setBounds(0, 0, controller.getFrameWidth(), controller.getFrameHeight());
 		this.setBackground(Color.DARK_GRAY);
-		
-		t = new Timer(5,AL);
-		t.start();
 	}
 	@Override
     public void paintComponent(Graphics g) {
