@@ -18,7 +18,6 @@ public class Controller {
 	private Frame frame;
 	private GameThread thread;
 	
-	//TODO Empty constructor? maybe make it private
 	public Controller() {}
 	/**
 	 * Initializes the game, adding a bar, a ball and the bricks to the field.
@@ -108,15 +107,15 @@ public class Controller {
 		ball.setAngle(ball.getAngle() % 360);
 	}
 	
-	//TODO What does this method do?
 	/**
+	 * This method sets the angel, when the ball is intersecting the BottomLeftCorner of a Brick.
 	 * 
-	 * @param x
-	 * @param y
+	 * @param x of the corner
+	 * @param y of the corners
 	 */
 	public void doBottomLeftCornerBouncingLogic(int x, int y) {
 		double atan = Math.toDegrees(Math.atan(absValue(ball.getMiddleY() - y) / absValue(ball.getMiddleX() - x)));
-		ball.setAngle(ball.getAngle() + 2 * absValue(360 - atan - ball.getAngle()) + 180); // <-- falsch!! // TODO
+		ball.setAngle(ball.getAngle() + 2 * absValue(360 - atan - ball.getAngle()) + 180);
 	}
 	/**
 	 * This method calculates the angle for the ball after bouncing from the sides.
@@ -142,15 +141,15 @@ public class Controller {
 		double z = OnePer * DeltaZ /100;
 		ball.setAngle(190+z*160.0);
 	}
-	//TODO What does this method do?
 	/**
-	 *
-	 * @param x
-	 * @param y
+	 * This method sets the angel, when the ball is intersecting the BottomRightCorner of a Brick.
+	 * 
+	 * @param x of the corner
+	 * @param y of the corners
 	 */
 	public void doBottomRightCornerBouncingLogic(int x, int y) {
 		double atan = Math.toDegrees(Math.atan(absValue(ball.getMiddleY() - y) / absValue(ball.getMiddleX() - x)));
-		ball.setAngle(ball.getAngle() - 2 * absValue(360 - atan - ball.getAngle()) + 180); // <-- falsch!! // TODO
+		ball.setAngle(ball.getAngle() - 2 * absValue(360 - atan - ball.getAngle()) + 180);
 	}
 	/**
 	 * This method calculates and returns the absolute value of the given number.
