@@ -31,9 +31,6 @@ public class Gamepanel extends JPanel {
 		
 		this.addMouseListener(new Mouselistener(controller));
 		this.addMouseMotionListener(new Mousemotionlistener(controller));
-		
-		thread = new GameThread(controller);
-		thread.start();
 	}
 	
 	

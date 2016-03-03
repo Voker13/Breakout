@@ -1,10 +1,12 @@
 package view;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -23,9 +25,15 @@ public class Optionpanel extends JPanel {
 	 */
 	public Optionpanel(Controller controller) {
 		this.controller = controller;
-		this.setBounds(0, 0, controller.getFrameWidth(), controller.getFrameHeight());
+		this.setBounds(0, 0, controller.getFrameWidth(), controller.getOptionpanelHeight());
 		this.setBackground(Color.DARK_GRAY);
+		JLabel label = new JLabel();
+//		label.setBounds(300, 20, 200, 50); //TODO
+		label.setText("Score: "+controller.getScore());
+		label.setForeground(Color.white);
+		add(label);
 	}
+	
 	@Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

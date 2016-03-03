@@ -17,6 +17,7 @@ public class Controller {
 	private boolean running = false;
 	private Frame frame;
 	private GameThread thread;
+	private int score = 0;
 	
 	public Controller() {
 		
@@ -28,7 +29,7 @@ public class Controller {
 		bar = new Bar(panelWidth, panelHeight);
 		ball = new Ball(bar.getX()+bar.getWidth()/2, bar.getY(), panelWidth, panelHeight);
 		grid = new Grid();
-		grid.fill();
+		grid.fill(0);
 		frame = new Frame(this);
 		thread = new GameThread(this);
 		thread.start();
@@ -37,13 +38,14 @@ public class Controller {
 	 * Stops the ball and resets the lives to 3.
 	 */
 	public void reset() {
+		score = 0;
 		lifes = 3; 
 		running = false;
 	}
 	/**
 	 * This method is called each tick to move the ball and check for any collisions.
 	 */
-	public void doLogic() {
+	public void doLogicBall() {
 		
 		//Bounce on the left border?
 		if (ball.getX() <= 0) {
@@ -314,6 +316,18 @@ public class Controller {
 	 */
 	public void setFrame(Frame frame) {
 		this.frame = frame;
+	}
+	/**
+	 * @return the score
+	 */
+	public int getScore() {
+		return score;
+	}
+	/**
+	 * @param score the score to set
+	 */
+	public void setScore(int score) {
+		this.score = score;
 	}
 
 	

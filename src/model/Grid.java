@@ -31,24 +31,44 @@ public class Grid {
 	 * Fills this grid with the standard brick-formation.
 	 * (Color swapping after each second row)
 	 */
-	public void fill() {
+	public void fill(int level) {
+		int[][] brickChar;
+		switch(level) {
+			case 0: {
+				System.out.println("Level 1");
+				brickChar = new int[][] {
+					new int[] {1,1,1,1,1,1,1,1,1,1},
+					new int[] {1,1,1,1,1,1,1,1,1,1},
+					new int[] {1,1,1,1,1,1,1,1,1,1},
+					new int[] {1,1,1,1,1,1,1,1,1,1},
+					new int[] {1,1,1,1,1,1,1,1,1,1},
+					new int[] {1,1,1,1,1,1,1,1,1,1},
+					new int[] {1,1,1,1,1,1,1,1,1,1},
+					new int[] {1,1,1,1,1,1,1,1,1,1},
+					new int[] {1,1,1,1,1,1,1,1,1,1},
+					new int[] {1,1,1,1,1,1,1,1,1,1}
+				};
+				break;
+			}
+			default: {
+				brickChar = new int[][] {
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+				};
+				break;
+			}
+		}
 		for (int i=0; i<10; i++) {
 			for (int j=0; j<10; j++) {
-				Color c;
-				switch(j) {
-					case 0: c = Color.red;break;
-					case 1: c = Color.red;break;
-					case 2: c = Color.orange;break;
-					case 3: c = Color.orange;break;
-					case 4: c = Color.yellow;break;
-					case 5: c = Color.yellow;break;
-					case 6: c = Color.green;break;
-					case 7: c = Color.green;break;
-					case 8: c = Color.cyan;break;
-					case 9: c = Color.cyan;break;
-					default: c = Color.gray;break;
-				}
-				this.grid[i][j] = new Brick(this, i, j, c);
+				this.grid[i][j] = new Brick( i, j, brickChar[i][j]);
 			}
 		}
 	}
