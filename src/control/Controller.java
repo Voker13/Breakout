@@ -24,7 +24,8 @@ public class Controller {
 	private Frame frame;
 	private GameThread thread;
 	private int score = 0;
-	private MusicThread backgroundMusic = new MusicThread();
+	private MusicThread backgroundMusic;
+	private boolean finish = false;
 	
 	public Controller() {
 		
@@ -33,7 +34,6 @@ public class Controller {
 	 * Initializes the game, adding a bar, a ball and the bricks to the field.
 	 */
 	public void initialize() {
-		backgroundMusic.start();
 		bar = new Bar(panelWidth, panelHeight);
 		ball = new Ball(bar.getX()+bar.getWidth()/2, bar.getY(), panelWidth, panelHeight);
 		grid = new Grid();
@@ -41,6 +41,8 @@ public class Controller {
 		frame = new Frame(this);
 		thread = new GameThread(this);
 		thread.start();
+		backgroundMusic = new MusicThread();
+		backgroundMusic.start();
 	}
 	/**
 	 * Stops the ball and resets the lives to 3.
@@ -50,6 +52,7 @@ public class Controller {
 		lifes = 3; 
 		level = 0;
 		running = false;
+		finish = false;
 	}
 	/**
 	 * This method is called each tick to move the ball and check for any collisions.
@@ -413,6 +416,18 @@ public class Controller {
 	 */
 	public void setMaxLevel(int maxLevel) {
 		this.maxLevel = maxLevel;
+	}
+	/**
+	 * @return the finish
+	 */
+	public boolean isFinish() {
+		return finish;
+	}
+	/**
+	 * @param finish the finish to set
+	 */
+	public void setFinish(boolean finish) {
+		this.finish = finish;
 	}
 
 	

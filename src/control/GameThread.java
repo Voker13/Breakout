@@ -17,7 +17,11 @@ public class GameThread extends Thread {
 			controller.getFrame().repaint();
 			
 			//sets the current score to the jlabel
-			controller.getFrame().getOptionpanel().getLabel().setText("Score: "+controller.getScore());
+			controller.getFrame().getOptionpanel().getScoreLabel().setText("Score: "+controller.getScore());
+			controller.getFrame().getOptionpanel().getLevelLabel().setText("Level: "+controller.getLevel());
+			if (controller.isFinish()) {
+				
+			}
 			
 			// setting the right coordinate to the ball and moves it
 			if (!controller.isRunning()) {
@@ -29,8 +33,7 @@ public class GameThread extends Thread {
 					controller.setRunning(false);
 					controller.setLevel(controller.getLevel()+1);
 					if (controller.getLevel() >= controller.getMaxLevel()) {
-						// gewonnen / alle level durchgespielt
-						System.out.println("Victory");
+						controller.setFinish(true);
 					}
 					else {
 						controller.getGrid().fill(controller.getLevel());
