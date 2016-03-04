@@ -22,6 +22,7 @@ public class MusicThread extends Thread
 	        sleep(clip.getMicrosecondLength());
 	      } catch (Exception e) {
 	        System.err.println("Did not work :(");
+	        e.printStackTrace();
 	      }
 	 }
 	 /**
