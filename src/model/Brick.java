@@ -224,8 +224,10 @@ public class Brick {
 	 * @param alpha the alpha to set
 	 */
 	public void setAlpha(int alpha) {
-		this.alpha = alpha;
-		createCurrentColor();
+		if (this.getIndex() != 1) {
+			this.alpha = alpha;
+			createCurrentColor();
+		}
 	}
 
 	/**
@@ -239,8 +241,10 @@ public class Brick {
 	 * @param red the red to set
 	 */
 	public void setRed(int red) {
-		this.red = red;
-		createCurrentColor();
+		if (this.getIndex() != 1) {
+			this.red = red;
+			createCurrentColor();
+		}
 	}
 
 	/**
@@ -254,8 +258,10 @@ public class Brick {
 	 * @param green the green to set
 	 */
 	public void setGreen(int green) {
-		this.green = green;
-		createCurrentColor();
+		if (this.getIndex() != 1) {
+			this.green = green;
+			createCurrentColor();
+		}
 	}
 
 	/**
@@ -269,8 +275,10 @@ public class Brick {
 	 * @param blue the blue to set
 	 */
 	public void setBlue(int blue) {
-		this.blue = blue;
-		createCurrentColor();
+		if (this.getIndex() != 1) {
+			this.blue = blue;
+			createCurrentColor();
+		}
 	}
 
 }

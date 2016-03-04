@@ -22,9 +22,9 @@ public class Mouselistener implements MouseListener{
 			controller.getBall().setAngle(270);
 			
 			//TODO just for testting here <<--
-			controller.getBall().setAngle(225);
-			controller.getBall().setX(55);
-			controller.getBall().setY(65);
+//			controller.getBall().setAngle(225);
+//			controller.getBall().setX(55);
+//			controller.getBall().setY(65);
 			
 			controller.setRunning(true);
 		}

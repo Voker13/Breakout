@@ -29,7 +29,7 @@ public class Controller {
 		bar = new Bar(panelWidth, panelHeight);
 		ball = new Ball(bar.getX()+bar.getWidth()/2, bar.getY(), panelWidth, panelHeight);
 		grid = new Grid();
-		grid.fill(1);
+		grid.fill(0);
 		frame = new Frame(this);
 		thread = new GameThread(this);
 		thread.start();
@@ -77,8 +77,24 @@ public class Controller {
 			Brick brick = ball.intersects(grid); 
 			Brick brick2 = ball.intersectsSecond(grid, brick);
 			if (brick != null) {
+				// cases for double intersect... -->>
+				if (brick2 != null) {
+					System.out.println("Double Intersect");
+					if ((ball.getMiddleY() > brick.getY()+brick.getHeight() || ball.getMiddleY() < brick.getY()) &&
+							(ball.getMiddleY() > brick2.getY()+brick2.getHeight() || ball.getMiddleY() < brick2.getY())) {
+						doTopBottomBounceLogic();
+					}
+					else if ((ball.getMiddleX() > brick.getX()+brick.getWidth() || ball.getMiddleX() < brick.getX()) &&
+							(ball.getMiddleX() > brick.getX()+brick.getWidth() || ball.getMiddleX() < brick.getX())) {
+						doRightLeftBounceLogic();
+					}
+					else {
+						ball.setAngle(ball.getAngle()+180);
+					}
+					
+				}
 				 //Brick and Ball intersecting at an edge
-				if (ball.getMiddleX() > brick.getX() && ball.getMiddleX() < brick.getX()+brick.getWidth()) {
+				else if (ball.getMiddleX() > brick.getX() && ball.getMiddleX() < brick.getX()+brick.getWidth()) {
 					doTopBottomBounceLogic();
 					System.out.println("Collision @ Brick("+brick.getPositionArrayX()+":"+brick.getPositionArrayY() +") mirroring @ the x-axis");
 					
@@ -87,15 +103,7 @@ public class Controller {
 					doRightLeftBounceLogic();
 					System.out.println("Collision @ Brick("+brick.getPositionArrayX()+":"+brick.getPositionArrayY() +") mirroring @ the y-axis");
 				}
-				else if (brick2 != null) {
-					System.out.println("Double Intersect");
-					if (ball.getMiddleY() > brick.getY()+brick.getHeight() || ball.getMiddleY() < brick.getY()) {
-						doTopBottomBounceLogic();
-					}
-					else {
-						doRightLeftBounceLogic();
-					}
-				}
+				
 				 //Brick and Ball intersecting at a corner
 				else {
 					 //LinksOben
@@ -185,7 +193,7 @@ public class Controller {
 		else if (DeltaZ > bar.getWidth()) { DeltaZ = bar.getWidth();}
 		double OnePer = (((double)bar.getWidth())/100);
 		double z = OnePer * DeltaZ /100;
-		ball.setAngle(190+z*160.0);
+		ball.setAngle(210+z*120.0);
 	}
 	/**
 	 * This method calculates and returns the absolute value of the given number.

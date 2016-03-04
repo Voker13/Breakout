@@ -50,7 +50,7 @@ public class Gamepanel extends JPanel {
 			for (int j=0; j<10; j++) {
 				if (grid.getBrick(i, j).isVisible()) {
 					g2.setColor(grid.getBrick(i, j).getColor());
-					//g2.drawRect(grid.getBrick(i, j).getX(), grid.getBrick(i, j).getY(), grid.getBrick(i, j).getWidth(), grid.getBrick(i, j).getHeight());
+					g2.drawRect(grid.getBrick(i, j).getX(), grid.getBrick(i, j).getY(), grid.getBrick(i, j).getWidth(), grid.getBrick(i, j).getHeight());
 					g2.fillRect(grid.getBrick(i, j).getX(), grid.getBrick(i, j).getY(), grid.getBrick(i, j).getWidth(), grid.getBrick(i, j).getHeight());
 				}
 			}
