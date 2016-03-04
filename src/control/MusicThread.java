@@ -19,7 +19,7 @@ public class MusicThread extends Thread
 	        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Main.class.getResourceAsStream("/sounds/background/"+getRandomBackgroundMusic()));
 	        clip.open(inputStream);
 	        clip.start();
-	        sleep(clip.getMicrosecondLength());
+	        //sleep(clip.getMicrosecondLength());
 	      } catch (Exception e) {
 	        System.err.println("Did not work :(");
 	      }
@@ -31,8 +31,10 @@ public class MusicThread extends Thread
 	 private String getRandomBackgroundMusic()
 	 {
 		 Random rand = new Random();
-		 int random = rand.nextInt(new File("/sounds/background/").listFiles().length);
-		 
-		 return "Overworld.wav";
+		 File folder = new File("/sounds/background/");
+		 File[] listOfFiles = folder.listFiles();
+		 int random = rand.nextInt(listOfFiles.length);
+		 System.out.println("Looking for backgroundmusic at this path: '/sounds/background'. Found " + listOfFiles.length +" files.");
+		 return listOfFiles[random].getName();
 	 }
 }
