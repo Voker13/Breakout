@@ -73,6 +73,9 @@ public class Controller {
 		else if (ball.getY()+ball.getSize() >= panelHeight) {
 			lifes --;
 			running = false;
+			if (level < 0) {
+				// gewonnen / alle level durchgespielt
+			}
 		}
 		//Collides with an brick?
 		else {

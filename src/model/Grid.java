@@ -90,6 +90,17 @@ public class Grid {
 			}
 		}
 	}
+	
+	public boolean empty() {
+		for (int i=0; i<arrayLenghtD1; i++) {
+			for (int j=0; j<arrayLenghtD2; j++) {
+				if (this.getBrick(i, j).isVisible() == false) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 	/**
 	 * @return the arrayLenghtD1
 	 */
