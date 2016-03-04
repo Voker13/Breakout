@@ -69,6 +69,28 @@ public class Ball {
 		return null;
 	}
 	
+	/**
+	 * Returns the Brick, the ball collides with, if there is a second one.
+	 * @param grid
+	 * @param brick, the current brick, witch already intersects the ball.
+	 * @return
+	 */
+	public Brick intersectsSecond(Grid grid,Brick brick) {
+		Shape oval = new Ellipse2D.Float((float)this.x, (float)this.y, (float)this.size, (float)this.size);
+		for (int i=0; i<10; i++) {
+			for (int j=0; j<10; j++) {
+				if (oval.intersects(new Rectangle2D.Float( grid.getBrick(i, j).getX(), grid.getBrick(i, j).getY(), grid.getBrick(i, j).getWidth(), grid.getBrick(i, j).getHeight()))) {
+					if (grid.getBrick(i, j).isVisible()) {
+						if(brick != grid.getBrick(i, j)) {
+							return grid.getBrick(i, j);
+						}
+					}
+				}
+			}
+		}
+		return null;
+	}
+	
 	//Getter and Setter:
 	
 	/**

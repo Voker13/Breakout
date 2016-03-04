@@ -75,6 +75,7 @@ public class Controller {
 		//Collides with an brick?
 		else {
 			Brick brick = ball.intersects(grid); 
+			Brick brick2 = ball.intersectsSecond(grid, brick);
 			if (brick != null) {
 				 //Brick and Ball intersecting at an edge
 				if (ball.getMiddleX() > brick.getX() && ball.getMiddleX() < brick.getX()+brick.getWidth()) {
@@ -86,13 +87,21 @@ public class Controller {
 					doRightLeftBounceLogic();
 					System.out.println("Collision @ Brick("+brick.getPositionArrayX()+":"+brick.getPositionArrayY() +") mirroring @ the y-axis");
 				}
+				else if (brick2 != null) {
+					System.out.println("Double Intersect");
+					if (ball.getMiddleY() > brick.getY()+brick.getHeight() || ball.getMiddleY() < brick.getY()) {
+						doTopBottomBounceLogic();
+					}
+					else {
+						doRightLeftBounceLogic();
+					}
+				}
 				 //Brick and Ball intersecting at a corner
 				else {
 					 //LinksOben
 					if (ball.getMiddleX() < brick.getX() && ball.getMiddleY() < brick.getY()) {
 						System.out.print("Collision TopLeftCorner @ Brick("+brick.getPositionArrayX()+":"+brick.getPositionArrayY() +")");
 						doBottomRightCornerBouncingLogic(brick.getX(), brick.getY());
-						// TODO just placeholder
 					}
 					 //LinksUnten
 					else if (ball.getMiddleX() < brick.getX() && ball.getMiddleY() > brick.getY()+brick.getHeight()) {
@@ -103,7 +112,6 @@ public class Controller {
 					else if (ball.getMiddleX() > brick.getX()+brick.getWidth() && ball.getMiddleY() < brick.getY()) {
 						System.out.print("Collision TopRightCorner @ Brick("+brick.getPositionArrayX()+":"+brick.getPositionArrayY() +")");
 						doBottomLeftCornerBouncingLogic(brick.getX()+brick.getWidth(), brick.getY());
-						// TODO just placeholder
 					}
 					 //RechtsUnten
 					else if (ball.getMiddleX() > brick.getX()+brick.getWidth() && ball.getMiddleY() > brick.getY()+brick.getHeight()) {
@@ -116,6 +124,14 @@ public class Controller {
 				if (brick.getHardiness() == 0) {
 					brick.setVisible(false);
 					score += brick.getScore();
+				}
+				if (brick2 != null) {
+					brick2.setAlpha(brick2.getAlpha() / 2);
+					brick2.setHardiness(brick2.getHardiness() - 1);
+					if (brick2.getHardiness() == 0) {
+						brick2.setVisible(false);
+						score += brick2.getScore();
+					}
 				}
 			}
 		}
