@@ -29,7 +29,7 @@ public class Controller {
 		bar = new Bar(panelWidth, panelHeight);
 		ball = new Ball(bar.getX()+bar.getWidth()/2, bar.getY(), panelWidth, panelHeight);
 		grid = new Grid();
-		grid.fill(0);
+		grid.fill(1);
 		frame = new Frame(this);
 		thread = new GameThread(this);
 		thread.start();

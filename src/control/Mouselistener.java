@@ -22,31 +22,22 @@ public class Mouselistener implements MouseListener{
 			controller.getBall().setAngle(270);
 			
 			//TODO just for testting here <<--
-//			controller.getBall().setAngle(0);
-//			controller.getBall().setX(50);
-//			controller.getBall().setY(180);
+			controller.getBall().setAngle(225);
+			controller.getBall().setX(55);
+			controller.getBall().setY(65);
 			
 			controller.setRunning(true);
 		}
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseEntered(MouseEvent e) {}
 
 	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Maybe pause game here?
-		
-	}
+	public void mouseExited(MouseEvent e) {}
 
 	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mousePressed(MouseEvent e) {}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
