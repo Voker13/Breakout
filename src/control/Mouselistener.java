@@ -20,7 +20,12 @@ public class Mouselistener implements MouseListener{
 	public void mouseClicked(MouseEvent arg0) {
 		if (!controller.isRunning()) {
 			controller.getBall().setAngle(270);
-//			ball.setRunning(true);
+			
+			//TODO just for testting here <<--
+			controller.getBall().setAngle(315);
+			controller.getBall().setX(100);
+			controller.getBall().setY(305);
+			
 			controller.setRunning(true);
 		}
 	}

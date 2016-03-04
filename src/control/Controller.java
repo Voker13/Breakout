@@ -29,7 +29,7 @@ public class Controller {
 		bar = new Bar(panelWidth, panelHeight);
 		ball = new Ball(bar.getX()+bar.getWidth()/2, bar.getY(), panelWidth, panelHeight);
 		grid = new Grid();
-		grid.fill(0);
+		grid.fill(1);
 		frame = new Frame(this);
 		thread = new GameThread(this);
 		thread.start();
@@ -79,28 +79,35 @@ public class Controller {
 				 //Brick and Ball intersecting at an edge
 				if (ball.getMiddleX() > brick.getX() && ball.getMiddleX() < brick.getX()+brick.getWidth()) {
 					doTopBottomBounceLogic();
+					System.out.println("Collision @ Brick("+brick.getPositionArrayX()+":"+brick.getPositionArrayY() +") mirroring @ the x-axis");
+					
 				}
 				else if (ball.getMiddleY() > brick.getY() && ball.getMiddleY() < brick.getY()+brick.getHeight()) {
 					doRightLeftBounceLogic();
+					System.out.println("Collision @ Brick("+brick.getPositionArrayX()+":"+brick.getPositionArrayY() +") mirroring @ the y-axis");
 				}
 				 //Brick and Ball intersecting at a corner
 				else {
 					 //LinksOben
 					if (ball.getMiddleX() < brick.getX() && ball.getMiddleY() < brick.getY()) {
+						System.out.print("Collision TopLeftCorner @ Brick("+brick.getPositionArrayX()+":"+brick.getPositionArrayY() +")");
 						doBottomLeftCornerBouncingLogic(brick.getX(), brick.getY());
 						// TODO just placeholder
 					}
 					 //LinksUnten
 					else if (ball.getMiddleX() < brick.getX() && ball.getMiddleY() > brick.getY()+brick.getHeight()) {
+						System.out.print("Collision BottomLeftCorner @ Brick("+brick.getPositionArrayX()+":"+brick.getPositionArrayY() +")");
 						doBottomLeftCornerBouncingLogic(brick.getX(), brick.getY()+brick.getHeight());
 					}
 					 //RechtsOben
 					else if (ball.getMiddleX() > brick.getX()+brick.getWidth() && ball.getMiddleY() < brick.getY()) {
+						System.out.print("Collision TopRightCorner @ Brick("+brick.getPositionArrayX()+":"+brick.getPositionArrayY() +")");
 						doBottomRightCornerBouncingLogic(brick.getX()+brick.getWidth(), brick.getY());
 						// TODO just placeholder
 					}
 					 //RechtsUnten
 					else if (ball.getMiddleX() > brick.getX()+brick.getWidth() && ball.getMiddleY() > brick.getY()+brick.getHeight()) {
+						System.out.print("Collision BottomRightCorner @ Brick("+brick.getPositionArrayX()+":"+brick.getPositionArrayY() +")");
 						doBottomRightCornerBouncingLogic(brick.getX()+brick.getWidth(), brick.getY()+brick.getHeight());
 					}
 				}
@@ -125,6 +132,20 @@ public class Controller {
 	public void doBottomLeftCornerBouncingLogic(int x, int y) {
 		double atan = Math.toDegrees(Math.atan(absValue(ball.getMiddleY() - y) / absValue(ball.getMiddleX() - x)));
 		ball.setAngle(ball.getAngle() + 2 * absValue(360 - atan - ball.getAngle()) + 180);
+		ball.move();
+		System.out.println(" mirroring @ an "+atan+" angle.");
+	}
+	/**
+	 * This method sets the angel, when the ball is intersecting the BottomRightCorner of a Brick.
+	 * 
+	 * @param x of the corner
+	 * @param y of the corners
+	 */
+	public void doBottomRightCornerBouncingLogic(int x, int y) {
+		double atan = Math.toDegrees(Math.atan(absValue(ball.getMiddleY() - y) / absValue(ball.getMiddleX() - x)));
+		ball.setAngle(ball.getAngle() - 2 * absValue(360 - atan - ball.getAngle()) + 180);
+		ball.move();		
+		System.out.println(" mirroring @ an "+(atan+90)+" angle.");
 	}
 	/**
 	 * This method calculates the angle for the ball after bouncing from the sides.
@@ -149,16 +170,6 @@ public class Controller {
 		double OnePer = (((double)bar.getWidth())/100);
 		double z = OnePer * DeltaZ /100;
 		ball.setAngle(190+z*160.0);
-	}
-	/**
-	 * This method sets the angel, when the ball is intersecting the BottomRightCorner of a Brick.
-	 * 
-	 * @param x of the corner
-	 * @param y of the corners
-	 */
-	public void doBottomRightCornerBouncingLogic(int x, int y) {
-		double atan = Math.toDegrees(Math.atan(absValue(ball.getMiddleY() - y) / absValue(ball.getMiddleX() - x)));
-		ball.setAngle(ball.getAngle() - 2 * absValue(360 - atan - ball.getAngle()) + 180);
 	}
 	/**
 	 * This method calculates and returns the absolute value of the given number.

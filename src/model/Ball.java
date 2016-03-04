@@ -7,7 +7,7 @@ public class Ball {
 
 	private double x;
 	private double y;
-	private final int size = 10;
+	private final int size = 40;
 	private double speed = 4;
 	private double angle = 270;
 	private int panelWidth;
