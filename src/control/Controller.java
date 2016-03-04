@@ -15,7 +15,8 @@ public class Controller {
 	private int panelWidth = frameWidth-6;
 	private int panelHeight = frameHeight-40;
 	private int lifes = 3;
-	private int level = 2;
+	private int level = 0;
+	private int maxLevel = 2;
 	private boolean running = false;
 	private Frame frame;
 	private GameThread thread;
@@ -42,6 +43,7 @@ public class Controller {
 	public void reset() {
 		score = 0;
 		lifes = 3; 
+		level = 0;
 		running = false;
 	}
 	/**
@@ -73,9 +75,6 @@ public class Controller {
 		else if (ball.getY()+ball.getSize() >= panelHeight) {
 			lifes --;
 			running = false;
-			if (level < 0) {
-				// gewonnen / alle level durchgespielt
-			}
 		}
 		//Collides with an brick?
 		else {
@@ -397,6 +396,18 @@ public class Controller {
 	 */
 	public void setLevel(int level) {
 		this.level = level;
+	}
+	/**
+	 * @return the maxLevel
+	 */
+	public int getMaxLevel() {
+		return maxLevel;
+	}
+	/**
+	 * @param maxLevel the maxLevel to set
+	 */
+	public void setMaxLevel(int maxLevel) {
+		this.maxLevel = maxLevel;
 	}
 
 	

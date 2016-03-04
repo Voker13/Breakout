@@ -8,7 +8,7 @@ public class Ball {
 	private double x;
 	private double y;
 	private final int size = 15;
-	private double speed = 4;
+	private double speed = 6;
 	private double angle = 0;
 	private int panelWidth;
 	private int panelHeight;
