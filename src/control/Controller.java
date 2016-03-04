@@ -29,7 +29,7 @@ public class Controller {
 		bar = new Bar(panelWidth, panelHeight);
 		ball = new Ball(bar.getX()+bar.getWidth()/2, bar.getY(), panelWidth, panelHeight);
 		grid = new Grid();
-		grid.fill(1);
+		grid.fill(0);
 		frame = new Frame(this);
 		thread = new GameThread(this);
 		thread.start();
@@ -91,7 +91,7 @@ public class Controller {
 					 //LinksOben
 					if (ball.getMiddleX() < brick.getX() && ball.getMiddleY() < brick.getY()) {
 						System.out.print("Collision TopLeftCorner @ Brick("+brick.getPositionArrayX()+":"+brick.getPositionArrayY() +")");
-						doBottomLeftCornerBouncingLogic(brick.getX(), brick.getY());
+						doBottomRightCornerBouncingLogic(brick.getX(), brick.getY());
 						// TODO just placeholder
 					}
 					 //LinksUnten
@@ -102,7 +102,7 @@ public class Controller {
 					 //RechtsOben
 					else if (ball.getMiddleX() > brick.getX()+brick.getWidth() && ball.getMiddleY() < brick.getY()) {
 						System.out.print("Collision TopRightCorner @ Brick("+brick.getPositionArrayX()+":"+brick.getPositionArrayY() +")");
-						doBottomRightCornerBouncingLogic(brick.getX()+brick.getWidth(), brick.getY());
+						doBottomLeftCornerBouncingLogic(brick.getX()+brick.getWidth(), brick.getY());
 						// TODO just placeholder
 					}
 					 //RechtsUnten

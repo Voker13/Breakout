@@ -4,6 +4,7 @@ public class GameThread extends Thread {
 
 	private Controller controller;
 	private int FPS = 60;
+	private double msPerFrame = 1000 / FPS;
 	
 	public GameThread(Controller controller) {
 		this.controller = controller;
@@ -30,7 +31,7 @@ public class GameThread extends Thread {
 
 			try {
 				long endTime = System.currentTimeMillis();
-				long sleepTime = 1000 / FPS - (endTime - startTime);
+				long sleepTime = (long) msPerFrame - (endTime - startTime);
 				
 //				System.out.println("Thread going to sleep for:" +
 //				sleepTime + "ms");
