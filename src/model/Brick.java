@@ -56,18 +56,18 @@ public class Brick {
 		this.positionArrayY = y;
 		this.index = index;
 		switch(index) {
-			case 0: red = 000; green = 000; blue = 000; hardiness = -1; score = 0; visible = false; break;
-			case 1: red = 000; green = 000; blue = 255; hardiness = 1; score = 100; break;
-			case 2: red = 000; green = 255; blue = 000; hardiness = 2; score = 200; break;
-			case 3: color = Color.yellow; hardiness = 3; score = 300; break;
-			case 4: color = Color.orange; hardiness = 4; score = 400; break;
-			case 5: color = Color.red; hardiness = 5; score = 500; break;
-			case 6: color = Color.magenta; hardiness = 6; score = 600; break;
-			case 7: color = Color.pink; hardiness = 7; score = 700; break;
-			case 8: color = Color.cyan; hardiness = 8; score = 800; break;
-			case 9: color = Color.gray; hardiness = 9; score = 900; break;
-			case 10: color = Color.black; hardiness = -1; score = 0; break;
-			default: color = Color.darkGray; hardiness = -1; score = 0; break;
+			case 0: red = 000; green = 000; blue = 000; hardiness = -1; score = 0; visible = false; break; //invis
+			case 1: red = 000; green = 000; blue = 000; hardiness = -1; score = 0; break; //black
+			case 2: red = 000; green = 000; blue = 255; hardiness = 1; score = 10; break; //blue
+			case 3: red = 000; green = 255; blue = 000; hardiness = 2; score = 20; break; //green
+			case 4: red = 255; green = 255; blue = 000; hardiness = 3; score = 30; break; //yellow
+			case 5: red = 255; green = 140; blue = 000; hardiness = 4; score = 40; break; //orange
+			case 6: red = 255; green = 000; blue = 000; hardiness = 5; score = 50; break; //red
+			case 7: red = 255; green = 000; blue = 255; hardiness = 6; score = 60; break; //magenta
+			case 8: red = 255; green = 020; blue = 147; hardiness = 7; score = 70; break; //pink
+			case 9: red = 000; green = 255; blue = 255; hardiness = 8; score = 80; break; //cyan
+			case 10: red = 100; green = 100; blue = 100; hardiness = 9; score = 90; break; //gray
+			default: red = 200; green = 200; blue = 200; hardiness = -1; score = 0; break; //drakgray
 		}
 		createCurrentColor();
 	}

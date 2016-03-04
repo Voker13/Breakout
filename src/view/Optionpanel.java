@@ -1,5 +1,6 @@
 package view;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
@@ -26,7 +27,7 @@ public class Optionpanel extends JPanel {
 		this.setBounds(0, 0, controller.getFrameWidth(), controller.getOptionpanelHeight());
 		this.setBackground(Color.DARK_GRAY);
 		label = new JLabel();
-//		label.setBounds(300, 20, 200, 50); //TODO
+		label.setFont(new Font("name", 0, 22));
 		label.setText("Score: "+controller.getScore());
 		label.setForeground(Color.white);
 		add(label);
