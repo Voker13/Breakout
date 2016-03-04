@@ -18,7 +18,7 @@ public class Mouselistener implements MouseListener{
 	}	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		if (!controller.isRunning()) {
+		if (!controller.isRunning() && !controller.isFinish()) {
 			controller.getBall().setAngle(270);
 			
 			//TODO just for testting here <<--
