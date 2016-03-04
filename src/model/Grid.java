@@ -40,23 +40,21 @@ public class Grid {
 				brickChar = new int[][] {
 					new int[] {0,0,0,0,0,0,0,0,0,0},
 					new int[] {0,0,0,0,0,0,0,0,0,0},
-					new int[] {0,2,2,2,2,2,2,2,2,0},
-					new int[] {0,3,3,3,3,3,3,3,3,0},
-					new int[] {0,2,2,2,2,2,2,2,2,0},
-					new int[] {0,3,3,3,3,3,3,3,3,0},
-					new int[] {0,2,2,2,2,2,2,2,2,0},
-					new int[] {0,3,3,3,3,3,3,3,3,0},
 					new int[] {0,0,0,0,0,0,0,0,0,0},
 					new int[] {0,0,0,0,0,0,0,0,0,0},
-					new int[] {0,0,0,0,0,0,3,3,3,3}
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,4,4,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0}
 				};
 				break;
 			}
 			case 1: {
 				System.out.println("Level 2");
 				brickChar = new int[][] {
-					new int[] {0,1,0,0,0,0,0,0,0,0},
-					new int[] {1,0,0,0,0,0,0,0,0,0},
 					new int[] {0,0,0,0,0,0,0,0,0,0},
 					new int[] {0,0,0,0,0,0,0,0,0,0},
 					new int[] {0,0,0,0,0,0,0,0,0,0},
@@ -64,6 +62,9 @@ public class Grid {
 					new int[] {0,0,0,0,0,0,0,0,0,0},
 					new int[] {0,0,0,0,0,0,0,0,0,0},
 					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,2,2,0,0,0,0},
 					new int[] {0,0,0,0,0,0,0,0,0,0}
 				};
 				break;
@@ -94,7 +95,7 @@ public class Grid {
 	public boolean isEmpty() {
 		for (int i=0; i<arrayLenghtD1; i++) {
 			for (int j=0; j<arrayLenghtD2; j++) {
-				if (this.getBrick(i, j).isVisible() == false) {
+				if (this.getBrick(i, j).getIndex() != 1 && this.getBrick(i, j).isVisible() == true) {
 					return false;
 				}
 			}

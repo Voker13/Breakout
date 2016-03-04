@@ -19,24 +19,26 @@ public class GameThread extends Thread {
 			//sets the current score to the jlabel
 			controller.getFrame().getOptionpanel().getLabel().setText("Score: "+controller.getScore());
 			
-			if (controller.getGrid().isEmpty() == false) {
-				// setting the right coordinate to the ball and moves it
-				if (!controller.isRunning()) {
-					controller.getBall().setX(controller.getBar().getX() + controller.getBar().getWidth() / 2 - controller.getBall().getSize() / 2);
-					controller.getBall().setY(controller.getBar().getY() - controller.getBall().getSize());
-				} else {
+			// setting the right coordinate to the ball and moves it
+			if (!controller.isRunning()) {
+				controller.getBall().setX(controller.getBar().getX() + controller.getBar().getWidth() / 2 - controller.getBall().getSize() / 2);
+				controller.getBall().setY(controller.getBar().getY() - controller.getBall().getSize());
+			} else {
+				// wenn man das level durchgespielt hat.... -->>>
+				if (controller.getGrid().isEmpty()) {
+					controller.setRunning(false);
+					controller.setLevel(controller.getLevel()+1);
+					if (controller.getLevel() >= controller.getMaxLevel()) {
+						// gewonnen / alle level durchgespielt
+						System.out.println("Victory");
+					}
+					else {
+						controller.getGrid().fill(controller.getLevel());
+					}
+				}
+				else {
 					controller.doLogicBall();
 					controller.getBall().move();
-				}
-			}
-			// wenn man das level durchgespielt hat.... -->>>
-			else {
-				controller.setRunning(false);
-				controller.setLevel(controller.getLevel()+1);
-				controller.getGrid().equals(controller.getLevel());
-				if (controller.getLevel() >= controller.getMaxLevel()) {
-					// gewonnen / alle level durchgespielt
-					System.out.println("Victory");
 				}
 			}
 
