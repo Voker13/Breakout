@@ -24,10 +24,23 @@ public class GameThread extends Thread {
 				controller.getBall().setX(controller.getBar().getX() + controller.getBar().getWidth() / 2 - controller.getBall().getSize() / 2);
 				controller.getBall().setY(controller.getBar().getY() - controller.getBall().getSize());
 			} else {
-				controller.doLogicBall();
-				controller.getBall().move();
+				// wenn man das level durchgespielt hat.... -->>>
+				if (controller.getGrid().isEmpty()) {
+					controller.setRunning(false);
+					controller.setLevel(controller.getLevel()+1);
+					if (controller.getLevel() >= controller.getMaxLevel()) {
+						// gewonnen / alle level durchgespielt
+						System.out.println("Victory");
+					}
+					else {
+						controller.getGrid().fill(controller.getLevel());
+					}
+				}
+				else {
+					controller.doLogicBall();
+					controller.getBall().move();
+				}
 			}
-			
 
 			try {
 				long endTime = System.currentTimeMillis();

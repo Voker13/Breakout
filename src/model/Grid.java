@@ -1,16 +1,17 @@
 package model;
-import java.awt.Color;
 
 public class Grid {
 	/**
 	 * The array all of the grid's bricks are stored in.
 	 */
 	private Brick[][] grid;
+	private int arrayLenghtD1 = 11;
+	private final int arrayLenghtD2 = 10;
 	/**
 	 * Constructs a new grid (10x10 Bricks)
 	 */
 	public Grid() {
-		this.grid = new Brick[10][10];
+		this.grid = new Brick[arrayLenghtD1][arrayLenghtD2];
 	}
 	/**
 	 * Returnes the brick stored at the given location of the grid.
@@ -39,12 +40,13 @@ public class Grid {
 				brickChar = new int[][] {
 					new int[] {0,0,0,0,0,0,0,0,0,0},
 					new int[] {0,0,0,0,0,0,0,0,0,0},
-					new int[] {0,2,2,2,2,2,2,2,2,0},
-					new int[] {0,3,3,3,3,3,3,3,3,0},
-					new int[] {0,2,2,2,2,2,2,2,2,0},
-					new int[] {0,3,3,3,3,3,3,3,3,0},
-					new int[] {0,2,2,2,2,2,2,2,2,0},
-					new int[] {0,3,3,3,3,3,3,3,3,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,4,4,0,0,0,0},
 					new int[] {0,0,0,0,0,0,0,0,0,0},
 					new int[] {0,0,0,0,0,0,0,0,0,0}
 				};
@@ -53,8 +55,6 @@ public class Grid {
 			case 1: {
 				System.out.println("Level 2");
 				brickChar = new int[][] {
-					new int[] {0,1,0,0,0,0,0,0,0,0},
-					new int[] {1,0,0,0,0,0,0,0,0,0},
 					new int[] {0,0,0,0,0,0,0,0,0,0},
 					new int[] {0,0,0,0,0,0,0,0,0,0},
 					new int[] {0,0,0,0,0,0,0,0,0,0},
@@ -62,6 +62,9 @@ public class Grid {
 					new int[] {0,0,0,0,0,0,0,0,0,0},
 					new int[] {0,0,0,0,0,0,0,0,0,0},
 					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,2,2,0,0,0,0},
 					new int[] {0,0,0,0,0,0,0,0,0,0}
 				};
 				break;
@@ -82,11 +85,40 @@ public class Grid {
 				break;
 			}
 		}
-		for (int i=0; i<10; i++) {
-			for (int j=0; j<10; j++) {
+		for (int i=0; i<arrayLenghtD1; i++) {
+			for (int j=0; j<arrayLenghtD2; j++) {
 				this.grid[i][j] = new Brick( j, i, brickChar[i][j]);
 			}
 		}
+	}
+	
+	public boolean isEmpty() {
+		for (int i=0; i<arrayLenghtD1; i++) {
+			for (int j=0; j<arrayLenghtD2; j++) {
+				if (this.getBrick(i, j).getIndex() != 1 && this.getBrick(i, j).isVisible() == true) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	/**
+	 * @return the arrayLenghtD1
+	 */
+	public int getArrayLenghtD1() {
+		return arrayLenghtD1;
+	}
+	/**
+	 * @param arrayLenghtD1 the arrayLenghtD1 to set
+	 */
+	public void setArrayLenghtD1(int arrayLenghtD1) {
+		this.arrayLenghtD1 = arrayLenghtD1;
+	}
+	/**
+	 * @return the arrayLenghtD2
+	 */
+	public int getArrayLenghtD2() {
+		return arrayLenghtD2;
 	}
 	
 }

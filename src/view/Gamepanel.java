@@ -46,8 +46,8 @@ public class Gamepanel extends JPanel {
         g2.fillOval((int)ball.getX(), (int)ball.getY(), ball.getSize(), ball.getSize());
         g2.drawRect(bar.getX(), bar.getY(), bar.getWidth(), bar.getHeight());
         g2.fillRect(bar.getX(), bar.getY(), bar.getWidth(), bar.getHeight());
-        for (int i=0; i<10; i++) {
-			for (int j=0; j<10; j++) {
+        for (int i=0; i<controller.getGrid().getArrayLenghtD1(); i++) {
+			for (int j=0; j<controller.getGrid().getArrayLenghtD2(); j++) {
 				if (grid.getBrick(i, j).isVisible()) {
 					g2.setColor(grid.getBrick(i, j).getColor());
 					g2.drawRect(grid.getBrick(i, j).getX(), grid.getBrick(i, j).getY(), grid.getBrick(i, j).getWidth(), grid.getBrick(i, j).getHeight());

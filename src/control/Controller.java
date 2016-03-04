@@ -8,6 +8,7 @@ import view.Frame;
 
 public class Controller {
 
+	private String version = "1.0";
 	private int optionpanelHeight = 40;
 	private int frameHeight = 600 + optionpanelHeight;
 	private int frameWidth = 400;
@@ -17,6 +18,8 @@ public class Controller {
 	private int panelWidth = frameWidth-6;
 	private int panelHeight = frameHeight-40;
 	private int lifes = 3;
+	private int level = 0;
+	private int maxLevel = 2;
 	private boolean running = false;
 	private Frame frame;
 	private GameThread thread;
@@ -45,6 +48,7 @@ public class Controller {
 	public void reset() {
 		score = 0;
 		lifes = 3; 
+		level = 0;
 		running = false;
 	}
 	/**
@@ -373,6 +377,42 @@ public class Controller {
 	 */
 	public void setScore(int score) {
 		this.score = score;
+	}
+	/**
+	 * @return the version
+	 */
+	public String getVersion() {
+		return version;
+	}
+	/**
+	 * @param version the version to set
+	 */
+	public void setVersion(String version) {
+		this.version = version;
+	}
+	/**
+	 * @return the level
+	 */
+	public int getLevel() {
+		return level;
+	}
+	/**
+	 * @param level the level to set
+	 */
+	public void setLevel(int level) {
+		this.level = level;
+	}
+	/**
+	 * @return the maxLevel
+	 */
+	public int getMaxLevel() {
+		return maxLevel;
+	}
+	/**
+	 * @param maxLevel the maxLevel to set
+	 */
+	public void setMaxLevel(int maxLevel) {
+		this.maxLevel = maxLevel;
 	}
 
 	
