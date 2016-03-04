@@ -9,7 +9,7 @@ public class Brick {
 	/**
 	 * This brick's individual width
 	 */
-	private final int width = 38;
+	private final int width = 28;
 	/**
 	 * This brick's individual height
 	 */

@@ -32,7 +32,7 @@ public class Optionpanel extends JPanel {
 		this.setLayout(null);
 		
 		scoreLabel = new JLabel();
-		scoreLabel.setBounds(230, -5, 100, 50);
+		scoreLabel.setBounds(230, -5, 150, 50);
 		scoreLabel.setFont(font);
 		scoreLabel.setText("Score: "+controller.getScore());
 		scoreLabel.setForeground(Color.white);

@@ -18,7 +18,7 @@ public class GameThread extends Thread {
 			
 			//sets the current score to the jlabel
 			controller.getFrame().getOptionpanel().getScoreLabel().setText("Score: "+controller.getScore());
-			controller.getFrame().getOptionpanel().getLevelLabel().setText("Level: "+controller.getLevel());
+			controller.getFrame().getOptionpanel().getLevelLabel().setText("Level: "+controller.getLevel()+1);
 			if (controller.isFinish()) {
 				
 			}
