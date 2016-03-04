@@ -18,7 +18,7 @@ public class GameThread extends Thread {
 			
 			//sets the current score to the jlabel
 			controller.getFrame().getOptionpanel().getScoreLabel().setText("Score: "+controller.getScore());
-			controller.getFrame().getOptionpanel().getLevelLabel().setText("Level: "+controller.getLevel()+1);
+			controller.getFrame().getOptionpanel().getLevelLabel().setText("Level: "+(controller.getLevel()+1));
 			if (controller.isFinish()) {
 				
 			}
@@ -31,7 +31,7 @@ public class GameThread extends Thread {
 				// wenn man das level durchgespielt hat.... -->>>
 				if (controller.getGrid().isEmpty()) {
 					controller.setRunning(false);
-					controller.setLevel(controller.getLevel()+1);
+					controller.setLevel((controller.getLevel()+1));
 					if (controller.getLevel() >= controller.getMaxLevel()) {
 						controller.setFinish(true);
 					}

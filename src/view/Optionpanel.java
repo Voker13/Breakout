@@ -34,14 +34,14 @@ public class Optionpanel extends JPanel {
 		scoreLabel = new JLabel();
 		scoreLabel.setBounds(230, -5, 150, 50);
 		scoreLabel.setFont(font);
-		scoreLabel.setText("Score: "+controller.getScore());
+		//scoreLabel.setText("Score: "+controller.getScore());
 		scoreLabel.setForeground(Color.white);
 		add(scoreLabel);
 		
 		levelLabel = new JLabel();
 		levelLabel.setBounds(130, -5, 100, 50);
 		levelLabel.setFont(font);
-		levelLabel.setText("Score: "+controller.getLevel());
+		//levelLabel.setText("Score: "+controller.getLevel());
 		levelLabel.setForeground(Color.white);
 		add(levelLabel);
 	}
