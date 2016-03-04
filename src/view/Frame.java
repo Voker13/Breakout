@@ -25,6 +25,7 @@ public class Frame extends JFrame{
 	    this.setLayout(null);
 	    this.setVisible(true);
 	    this.setResizable(false);
+	    this.setTitle("Breakout  v."+controller.getVersion());
 	    
 	    gamepanel = new Gamepanel(controller);
 	    optionpanel = new Optionpanel(controller);

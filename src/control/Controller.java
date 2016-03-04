@@ -5,6 +5,7 @@ import view.Frame;
 
 public class Controller {
 
+	private String version = "1.0";
 	private int optionpanelHeight = 40;
 	private int frameHeight = 600 + optionpanelHeight;
 	private int frameWidth = 400;
@@ -368,6 +369,18 @@ public class Controller {
 	 */
 	public void setScore(int score) {
 		this.score = score;
+	}
+	/**
+	 * @return the version
+	 */
+	public String getVersion() {
+		return version;
+	}
+	/**
+	 * @param version the version to set
+	 */
+	public void setVersion(String version) {
+		this.version = version;
 	}
 
 	
