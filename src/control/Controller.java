@@ -1,6 +1,9 @@
 package control;
 
-import model.*;
+import model.Ball;
+import model.Bar;
+import model.Brick;
+import model.Grid;
 import view.Frame;
 
 public class Controller {
@@ -18,6 +21,7 @@ public class Controller {
 	private Frame frame;
 	private GameThread thread;
 	private int score = 0;
+	private MusicThread backgroundMusic = new MusicThread();
 	
 	public Controller() {
 		
@@ -26,6 +30,7 @@ public class Controller {
 	 * Initializes the game, adding a bar, a ball and the bricks to the field.
 	 */
 	public void initialize() {
+		backgroundMusic.start();
 		bar = new Bar(panelWidth, panelHeight);
 		ball = new Ball(bar.getX()+bar.getWidth()/2, bar.getY(), panelWidth, panelHeight);
 		grid = new Grid();
