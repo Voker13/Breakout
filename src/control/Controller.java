@@ -15,6 +15,7 @@ public class Controller {
 	private int panelWidth = frameWidth-6;
 	private int panelHeight = frameHeight-40;
 	private int lifes = 3;
+	private int level = 2;
 	private boolean running = false;
 	private Frame frame;
 	private GameThread thread;
@@ -381,6 +382,18 @@ public class Controller {
 	 */
 	public void setVersion(String version) {
 		this.version = version;
+	}
+	/**
+	 * @return the level
+	 */
+	public int getLevel() {
+		return level;
+	}
+	/**
+	 * @param level the level to set
+	 */
+	public void setLevel(int level) {
+		this.level = level;
 	}
 
 	

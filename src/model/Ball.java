@@ -57,8 +57,8 @@ public class Ball {
 	 */
 	public Brick intersects(Grid grid) {
 		Shape oval = new Ellipse2D.Float((float)this.x, (float)this.y, (float)this.size, (float)this.size);
-		for (int i=0; i<10; i++) {
-			for (int j=0; j<10; j++) {
+		for (int i=0; i<grid.getArrayLenghtD1(); i++) {
+			for (int j=0; j<grid.getArrayLenghtD2(); j++) {
 				if (oval.intersects(new Rectangle2D.Float( grid.getBrick(i, j).getX(), grid.getBrick(i, j).getY(), grid.getBrick(i, j).getWidth(), grid.getBrick(i, j).getHeight()))) {
 					if (grid.getBrick(i, j).isVisible()) {
 						return grid.getBrick(i, j);
@@ -77,8 +77,8 @@ public class Ball {
 	 */
 	public Brick intersectsSecond(Grid grid,Brick brick) {
 		Shape oval = new Ellipse2D.Float((float)this.x, (float)this.y, (float)this.size, (float)this.size);
-		for (int i=0; i<10; i++) {
-			for (int j=0; j<10; j++) {
+		for (int i=0; i<grid.getArrayLenghtD1(); i++) {
+			for (int j=0; j<grid.getArrayLenghtD2(); j++) {
 				if (oval.intersects(new Rectangle2D.Float( grid.getBrick(i, j).getX(), grid.getBrick(i, j).getY(), grid.getBrick(i, j).getWidth(), grid.getBrick(i, j).getHeight()))) {
 					if (grid.getBrick(i, j).isVisible()) {
 						if(brick != grid.getBrick(i, j)) {
