@@ -15,6 +15,8 @@ public class Optionpanel extends JPanel {
 	 */
 	private Controller controller;
 
+	private JLabel label;
+	
 	/**
 	 * Creates a new instance of this class with the given controller and the standard properties.
 	 * @param controller
@@ -23,7 +25,7 @@ public class Optionpanel extends JPanel {
 		this.controller = controller;
 		this.setBounds(0, 0, controller.getFrameWidth(), controller.getOptionpanelHeight());
 		this.setBackground(Color.DARK_GRAY);
-		JLabel label = new JLabel();
+		label = new JLabel();
 //		label.setBounds(300, 20, 200, 50); //TODO
 		label.setText("Score: "+controller.getScore());
 		label.setForeground(Color.white);
@@ -40,4 +42,18 @@ public class Optionpanel extends JPanel {
             g2.fillOval(20+i*20, 15, 10, 10);
         }
     }
+
+	/**
+	 * @return the label
+	 */
+	public JLabel getLabel() {
+		return label;
+	}
+
+	/**
+	 * @param label the label to set
+	 */
+	public void setLabel(JLabel label) {
+		this.label = label;
+	}
 }

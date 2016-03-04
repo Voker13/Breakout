@@ -15,6 +15,9 @@ public class GameThread extends Thread {
 			
 			controller.getFrame().repaint();
 			
+			//sets the current score to the jlabel
+			controller.getFrame().getOptionpanel().getLabel().setText("Score: "+controller.getScore());
+			
 			// setting the right coordinate to the ball and moves it
 			if (!controller.isRunning()) {
 				controller.getBall().setX(controller.getBar().getX() + controller.getBar().getWidth() / 2 - controller.getBall().getSize() / 2);

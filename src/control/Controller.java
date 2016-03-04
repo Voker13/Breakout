@@ -104,7 +104,12 @@ public class Controller {
 						doBottomRightCornerBouncingLogic(brick.getX()+brick.getWidth(), brick.getY()+brick.getHeight());
 					}
 				}
-				brick.setVisible(false);
+				brick.setAlpha(brick.getAlpha() / 2);
+				brick.setHardiness(brick.getHardiness() - 1);
+				if (brick.getHardiness() == 0) {
+					brick.setVisible(false);
+					score += brick.getScore();
+				}
 			}
 		}
 		

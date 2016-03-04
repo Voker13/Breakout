@@ -24,8 +24,8 @@ public class Grid {
 	/**
 	 * Sets the given brick {@code b} to the given location ({@code x},{@code y}) in the grid.
 	 */
-	public void setBrick(Brick b ,int x, int y) {
-		this.grid[x][y] = b;
+	public void setBrick(Brick b) {
+		this.grid[b.getPositionArrayX()][b.getPositionArrayY()] = b;
 	}
 	/**
 	 * Fills this grid with the standard brick-formation.
@@ -37,16 +37,16 @@ public class Grid {
 			case 0: {
 				System.out.println("Level 1");
 				brickChar = new int[][] {
-					new int[] {1,1,1,1,1,1,1,1,1,1},
-					new int[] {1,1,1,1,1,1,1,1,1,1},
-					new int[] {1,1,1,1,1,1,1,1,1,1},
-					new int[] {1,1,1,1,1,1,1,1,1,1},
-					new int[] {1,1,1,1,1,1,1,1,1,1},
-					new int[] {1,1,1,1,1,1,1,1,1,1},
-					new int[] {1,1,1,1,1,1,1,1,1,1},
-					new int[] {1,1,1,1,1,1,1,1,1,1},
-					new int[] {1,1,1,1,1,1,1,1,1,1},
-					new int[] {1,1,1,1,1,1,1,1,1,1}
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,1,1,1,1,1,1,1,1,0},
+					new int[] {0,2,2,2,2,2,2,2,2,0},
+					new int[] {0,1,1,1,1,1,1,1,1,0},
+					new int[] {0,2,2,2,2,2,2,2,2,0},
+					new int[] {0,1,1,1,1,1,1,1,1,0},
+					new int[] {0,2,2,2,2,2,2,2,2,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0},
+					new int[] {0,0,0,0,0,0,0,0,0,0}
 				};
 				break;
 			}
@@ -68,7 +68,7 @@ public class Grid {
 		}
 		for (int i=0; i<10; i++) {
 			for (int j=0; j<10; j++) {
-				this.grid[i][j] = new Brick( i, j, brickChar[i][j]);
+				this.grid[i][j] = new Brick( j, i, brickChar[i][j]);
 			}
 		}
 	}

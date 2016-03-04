@@ -22,6 +22,12 @@ public class Brick {
 	 * This brick's individual y-Coordinate
 	 */
 	private int y;
+	private int positionArrayX;
+	private int positionArrayY;
+	private int alpha = 255;
+	private int red;
+	private int green;
+	private int blue;
 	/**
 	 * Determines, whether the brick is visible or not
 	 */
@@ -41,13 +47,18 @@ public class Brick {
 	 * @param y 		y-Coordinate
 	 * @param color 	The brick's color
 	 */
-	public Brick(int x, int y, int i) {
+	private int index;
+	
+	public Brick(int x, int y, int index) {
 		this.x = 1+x*(width+2);
 		this.y = 31+y*(height+2);
-		switch(i) {
-			case 0: color = Color.black; hardiness = -1; score = 0; break;
-			case 1: color = Color.blue; hardiness = 1; score = 100; break;
-			case 2: color = Color.green; hardiness = 2; score = 200; break;
+		this.positionArrayX = x;
+		this.positionArrayY = y;
+		this.index = index;
+		switch(index) {
+			case 0: red = 000; green = 000; blue = 000; hardiness = -1; score = 0; visible = false; break;
+			case 1: red = 000; green = 000; blue = 255; hardiness = 1; score = 100; break;
+			case 2: red = 000; green = 255; blue = 000; hardiness = 2; score = 200; break;
 			case 3: color = Color.yellow; hardiness = 3; score = 300; break;
 			case 4: color = Color.orange; hardiness = 4; score = 400; break;
 			case 5: color = Color.red; hardiness = 5; score = 500; break;
@@ -55,10 +66,16 @@ public class Brick {
 			case 7: color = Color.pink; hardiness = 7; score = 700; break;
 			case 8: color = Color.cyan; hardiness = 8; score = 800; break;
 			case 9: color = Color.gray; hardiness = 9; score = 900; break;
+			case 10: color = Color.black; hardiness = -1; score = 0; break;
 			default: color = Color.darkGray; hardiness = -1; score = 0; break;
 		}
+		createCurrentColor();
 	}
-
+	
+	private void createCurrentColor() {
+		color = new Color(red,green,blue,alpha);
+	}
+	
 	/**
 	 * Returns the brick's color.
 	 */
@@ -152,6 +169,108 @@ public class Brick {
 	 */
 	public void setHardiness(int hardiness) {
 		this.hardiness = hardiness;
+	}
+
+	/**
+	 * @return the index
+	 */
+	public int getIndex() {
+		return index;
+	}
+
+	/**
+	 * @param index the index to set
+	 */
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+	/**
+	 * @return the positionArrayX
+	 */
+	public int getPositionArrayX() {
+		return positionArrayX;
+	}
+
+	/**
+	 * @param positionArrayX the positionArrayX to set
+	 */
+	public void setPositionArrayX(int positionArrayX) {
+		this.positionArrayX = positionArrayX;
+	}
+
+	/**
+	 * @return the positionArrayY
+	 */
+	public int getPositionArrayY() {
+		return positionArrayY;
+	}
+
+	/**
+	 * @param positionArrayY the positionArrayY to set
+	 */
+	public void setPositionArrayY(int positionArrayY) {
+		this.positionArrayY = positionArrayY;
+	}
+
+	/**
+	 * @return the alpha
+	 */
+	public int getAlpha() {
+		return alpha;
+	}
+
+	/**
+	 * @param alpha the alpha to set
+	 */
+	public void setAlpha(int alpha) {
+		this.alpha = alpha;
+		createCurrentColor();
+	}
+
+	/**
+	 * @return the red
+	 */
+	public int getRed() {
+		return red;
+	}
+
+	/**
+	 * @param red the red to set
+	 */
+	public void setRed(int red) {
+		this.red = red;
+		createCurrentColor();
+	}
+
+	/**
+	 * @return the green
+	 */
+	public int getGreen() {
+		return green;
+	}
+
+	/**
+	 * @param green the green to set
+	 */
+	public void setGreen(int green) {
+		this.green = green;
+		createCurrentColor();
+	}
+
+	/**
+	 * @return the blue
+	 */
+	public int getBlue() {
+		return blue;
+	}
+
+	/**
+	 * @param blue the blue to set
+	 */
+	public void setBlue(int blue) {
+		this.blue = blue;
+		createCurrentColor();
 	}
 
 }
