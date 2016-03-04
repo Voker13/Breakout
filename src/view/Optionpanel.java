@@ -16,21 +16,34 @@ public class Optionpanel extends JPanel {
 	 */
 	private Controller controller;
 
-	private JLabel label;
+	private JLabel scoreLabel;
+	private JLabel levelLabel;
 	
 	/**
 	 * Creates a new instance of this class with the given controller and the standard properties.
 	 * @param controller
 	 */
 	public Optionpanel(Controller controller) {
+		
+		Font font = new Font("name", 0, 22);
 		this.controller = controller;
 		this.setBounds(0, 0, controller.getFrameWidth(), controller.getOptionpanelHeight());
 		this.setBackground(Color.DARK_GRAY);
-		label = new JLabel();
-		label.setFont(new Font("name", 0, 22));
-		label.setText("Score: "+controller.getScore());
-		label.setForeground(Color.white);
-		add(label);
+		this.setLayout(null);
+		
+		scoreLabel = new JLabel();
+		scoreLabel.setBounds(230, -5, 100, 50);
+		scoreLabel.setFont(font);
+		scoreLabel.setText("Score: "+controller.getScore());
+		scoreLabel.setForeground(Color.white);
+		add(scoreLabel);
+		
+		levelLabel = new JLabel();
+		levelLabel.setBounds(130, -5, 100, 50);
+		levelLabel.setFont(font);
+		levelLabel.setText("Score: "+controller.getLevel());
+		levelLabel.setForeground(Color.white);
+		add(levelLabel);
 	}
 	
 	@Override
@@ -45,16 +58,32 @@ public class Optionpanel extends JPanel {
     }
 
 	/**
-	 * @return the label
+	 * @return the scoreLabel
 	 */
-	public JLabel getLabel() {
-		return label;
+	public JLabel getScoreLabel() {
+		return scoreLabel;
 	}
 
 	/**
-	 * @param label the label to set
+	 * @param scoreLabel the scoreLabel to set
 	 */
-	public void setLabel(JLabel label) {
-		this.label = label;
+	public void setScoreLabel(JLabel scoreLabel) {
+		this.scoreLabel = scoreLabel;
 	}
+
+	/**
+	 * @return the levelLabel
+	 */
+	public JLabel getLevelLabel() {
+		return levelLabel;
+	}
+
+	/**
+	 * @param levelLabel the levelLabel to set
+	 */
+	public void setLevelLabel(JLabel levelLabel) {
+		this.levelLabel = levelLabel;
+	}
+
+	
 }
