@@ -27,7 +27,7 @@ public class Gamepanel extends JPanel {
 	public Gamepanel(Controller controller) {
 		this.controller = controller;
 		this.setBounds(0, controller.getOptionpanelHeight() , controller.getPanelWidth(), controller.getPanelHeight());
-		this.setBackground(Color.white);
+		this.setBackground(Color.BLACK);
 		
 		this.addMouseListener(new Mouselistener(controller));
 		this.addMouseMotionListener(new Mousemotionlistener(controller));
@@ -41,7 +41,7 @@ public class Gamepanel extends JPanel {
         Ball ball = controller.getBall();
         Bar bar = controller.getBar();
         Grid grid = controller.getGrid();
-        g2.setColor(Color.BLACK);
+        g2.setColor(Color.lightGray);
         g2.drawOval((int)ball.getX(), (int)ball.getY(), ball.getSize(), ball.getSize());
         g2.fillOval((int)ball.getX(), (int)ball.getY(), ball.getSize(), ball.getSize());
         g2.drawRect(bar.getX(), bar.getY(), bar.getWidth(), bar.getHeight());

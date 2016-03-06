@@ -57,7 +57,7 @@ public class Brick {
 		this.index = index;
 		switch(index) {
 			case 0: red = 000; green = 000; blue = 000; hardiness = -1; score = 0; visible = false; break; //invis
-			case 1: red = 000; green = 000; blue = 000; hardiness = -1; score = 0; break; //black
+			case 1: red = 200; green = 200; blue = 200; hardiness = -1; score = 0; break; //black
 			case 2: red = 000; green = 000; blue = 255; hardiness = 1; score = 10; break; //blue
 			case 3: red = 000; green = 255; blue = 000; hardiness = 2; score = 20; break; //green
 			case 4: red = 255; green = 255; blue = 000; hardiness = 3; score = 30; break; //yellow
