@@ -51,7 +51,8 @@ public class Brick {
 	
 	public Brick(int x, int y, int index) {
 		this.x = 1+x*(width+2);
-		this.y = 31+y*(height+2);
+		//this.y = 31+y*(height+2);
+		this.y = 1+y*(height+2);
 		this.positionArrayX = x;
 		this.positionArrayY = y;
 		this.index = index;
