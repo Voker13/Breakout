@@ -16,10 +16,8 @@ public class MusicThread extends Thread
 	 {
 	      try {
 	        Clip clip = AudioSystem.getClip();
-	        System.out.println(getRandomBackgroundMusic());
 	        
-	        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Main.class.getResourceAsStream("/sounds/background/"+getRandomBackgroundMusic()));        
-	        System.out.println("/sounds/background/"+getRandomBackgroundMusic());
+	        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Main.class.getResourceAsStream("/sounds/background/"+getRandomBackgroundMusic())); 
 	        clip.open(inputStream);
 	        clip.start();
 	        sleep(clip.getMicrosecondLength());
@@ -35,10 +33,11 @@ public class MusicThread extends Thread
 	 private String getRandomBackgroundMusic()
 	 {
 		 Random rand = new Random();
-		 File folder = new File(".//bin/sounds/background/");
+		 File folder = new File("./src/sounds/background/").getAbsoluteFile();
+		 System.out.println(folder);
 		 File[] listOfFiles = folder.listFiles();
 	     int random = rand.nextInt(listOfFiles.length);
-//	     System.out.println(listOfFiles[random].getName());
 		 return listOfFiles[random].getName();
 	 }
+	 
 }
