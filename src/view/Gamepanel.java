@@ -2,9 +2,15 @@ package view;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.sql.Time;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import control.Controller;
 import control.GameThread;
+import control.Main;
 import control.Mouselistener;
 import control.Mousemotionlistener;
 import model.Ball;
@@ -25,6 +31,7 @@ public class Gamepanel extends JPanel {
 	 * @param controller
 	 */
 	public Gamepanel(Controller controller) {
+		this.setLayout(null);
 		this.controller = controller;
 		this.setBounds(0, controller.getOptionpanelHeight() , controller.getPanelWidth(), controller.getPanelHeight());
 		this.setBackground(Color.BLACK);
@@ -33,6 +40,34 @@ public class Gamepanel extends JPanel {
 		this.addMouseMotionListener(new Mousemotionlistener(controller));
 	}
 	
+	public void doTransition() {
+		
+		java.net.URL imgurl = Main.class.getResource("/animation/newLevel.gif");
+		Icon gif = new ImageIcon(imgurl);
+		
+		JLabel label = new JLabel(gif);
+		label.setBounds(0, 0, controller.getPanelWidth(), controller.getPanelHeight());
+		this.add(label);
+		this.repaint();
+
+		long t_1 = System.currentTimeMillis();
+		long t_2 = System.currentTimeMillis();
+		while (t_2-t_1 < 1600) {
+			t_2 = System.currentTimeMillis();
+//			System.out.println(t_2-t_1);
+		}
+		
+		controller.getGrid().fill(controller.getLevel());
+		this.repaint();
+		
+		t_1 = System.currentTimeMillis();
+		t_2 = System.currentTimeMillis();
+		while (t_2-t_1 < 1600) {
+			t_2 = System.currentTimeMillis();
+//			System.out.println(t_2-t_1);
+		}
+		label.setVisible(false);
+	}
 	
 	@Override
     public void paintComponent(Graphics g) {

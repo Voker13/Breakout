@@ -36,7 +36,7 @@ public class GameThread extends Thread {
 						controller.setFinish(true);
 					}
 					else {
-						controller.getGrid().fill(controller.getLevel());
+						controller.getFrame().getGamepanel().doTransition();
 					}
 				}
 				else {
