@@ -1,4 +1,4 @@
-package control;
+ package control;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -18,6 +18,8 @@ public class Mouselistener implements MouseListener{
 	}	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
+		// if the game is not running and if the game is not over
+		// shoots the ball of the bar  
 		if (!controller.isRunning() && !controller.isFinish()) {
 			controller.getBall().setAngle(270);
 			
