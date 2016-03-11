@@ -29,8 +29,9 @@ public class Grid {
 		this.grid[b.getPositionArrayX()][b.getPositionArrayY()] = b;
 	}
 	/**
-	 * Fills this grid with the standard brick-formation.
-	 * (Color swapping after each second row)
+	 * Fills this grid with the help of a int[][] in abbreviated form.
+	 * The integer in the array represents the type of brick.
+	 * @param level the chosen level
 	 */
 	public void fill(int level) {
 		int[][] brickChar;
@@ -123,6 +124,7 @@ public class Grid {
 				break;
 			}
 		}
+		// überträgt das int[][] auf das grid indem die richtigen bricks ausgewählt werden
 		for (int i=0; i<arrayLenghtD1; i++) {
 			for (int j=0; j<arrayLenghtD2; j++) {
 				this.grid[i][j] = new Brick( j, i, brickChar[i][j]);
@@ -130,6 +132,10 @@ public class Grid {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return true if all bricks in the grid are invisible, else false.
+	 */
 	public boolean isEmpty() {
 		for (int i=0; i<arrayLenghtD1; i++) {
 			for (int j=0; j<arrayLenghtD2; j++) {
