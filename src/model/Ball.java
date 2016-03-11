@@ -5,25 +5,20 @@ import java.awt.geom.Rectangle2D;
 
 public class Ball {
 
-	private double x;
-	private double y;
-	private final int size = 15;
-	private double speed = 4;
-	private double angle = 0;
-	private int panelWidth;
+	private double x; // the x coordinate of the ball
+	private double y; // the y coordinate of the ball
+	private final int size = 15; // the size of the ball
+	private double speed = 4; // the speed of the ball
+	private double angle = 0; // the direction of the balls movement
+	private int panelWidth; 
 	private int panelHeight;
 	
 	
 	/**
-	 * This constructor is used to create the standard-ball-object with the following parameters:
-	 * @param x				-the x-coordinate
-	 * @param y
-	 * @param panelWidth
-	 * @param panelHeight
+	 * This constructor is used to create the standard-ball-object.
+	 * Its x and y coordinate will be set to the middle of the bar.
 	 */
-	public Ball(int x, int y, int panelWidth, int panelHeight) {
-		this.x = x-size/2;
-		this.y = y-size;
+	public Ball(int panelWidth, int panelHeight) {
 		this.panelWidth = panelWidth;
 		this.panelHeight = panelHeight;
 	}

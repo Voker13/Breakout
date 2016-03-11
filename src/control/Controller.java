@@ -35,7 +35,7 @@ public class Controller {
 	 */
 	public void initialize() {
 		bar = new Bar(panelWidth, panelHeight);
-		ball = new Ball(bar.getX()+bar.getWidth()/2, bar.getY(), panelWidth, panelHeight);
+		ball = new Ball(panelWidth, panelHeight);
 		grid = new Grid();
 		grid.fill(0);
 		frame = new Frame(this);
