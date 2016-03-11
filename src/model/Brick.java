@@ -49,6 +49,12 @@ public class Brick {
 	 */
 	private int index;
 	
+	/**
+	 * Constructor of Brick
+	 * @param x the x place in the grid
+	 * @param y the y place in the grid
+	 * @param index the type of brick to chose (s. switch)
+	 */
 	public Brick(int x, int y, int index) {
 		this.x = 1+x*(width+2);
 		//this.y = 31+y*(height+2);
@@ -57,6 +63,7 @@ public class Brick {
 		this.positionArrayY = y;
 		this.index = index;
 		switch(index) {
+		// the type of bricks available
 			case 0: red = 000; green = 000; blue = 000; hardiness = -1; score = 0; visible = false; break; //invis
 			case 1: red = 200; green = 200; blue = 200; hardiness = -1; score = 0; break; //black
 			case 2: red = 000; green = 000; blue = 255; hardiness = 1; score = 10; break; //blue
@@ -73,6 +80,9 @@ public class Brick {
 		createCurrentColor();
 	}
 	
+	/**
+	 * creates the color to the rgb-alpha-values
+	 */
 	private void createCurrentColor() {
 		color = new Color(red,green,blue,alpha);
 	}
