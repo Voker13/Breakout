@@ -33,6 +33,9 @@ public class Frame extends JFrame{
 	    this.add(optionpanel);
 	    
 	}
+	/*
+	 * Getter and Setter: ...
+	 */
 	public Gamepanel getGamepanel() {
 		return gamepanel;
 	}
