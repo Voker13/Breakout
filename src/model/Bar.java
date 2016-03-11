@@ -42,7 +42,7 @@ public class Bar {
 	/**
 	 * Sets this bar's x-Coordinate to the new value, corresponding to the entered one.
 	 * Uses borders of the panel and the bar's width for the calculation.
-	 * @param x
+	 * @param x coordinate of the mouse
 	 */
 	public void doLogic(int x) {
 		this.setX(x-this.getWidth()/2);
