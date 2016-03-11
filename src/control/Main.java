@@ -13,7 +13,7 @@ public class Main {
  * MVC-Struktur Umsetztung
  * 
  * 
- * Unser Programm startet mit der Main in der als einzige Anweisung ein controller instanziert und inizialisiert wird.
+ * Unser Programm startet mit der Main, in der als einzige Anweisung ein controller instanziert und inizialisiert wird.
  * 
  * Im Controller befinden sich alle wichtigen Variablen, welche alle private sind, 
  * aber über getter und setter erreicht werden können. In dieser Klasse befinden sich unter andrem die Logic Mathode, 
