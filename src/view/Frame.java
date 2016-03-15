@@ -21,7 +21,7 @@ public class Frame extends JFrame{
 	public Frame(Controller controller) {
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    this.setBounds(300, 100, controller.getFrameWidth(), controller.getFrameHeight());
+	    this.setBounds(controller.getFrameX(), controller.getFrameY(), controller.getFrameWidth(), controller.getFrameHeight());
 	    this.setLayout(null);
 	    this.setVisible(true);
 	    this.setResizable(false);

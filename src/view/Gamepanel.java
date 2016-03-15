@@ -45,7 +45,7 @@ public class Gamepanel extends JPanel {
 	 * Creates a new JLabel with a gif that we created
 	 * and changes the Level(Grid) in the middle of the time.
 	 */
-	public void doTransition() {
+	public void doTransitionToNextLevel() {
 		
 		java.net.URL imgurl = Main.class.getResource("/animation/newLevel.gif"); // ht sich die URL vom gif
 		Icon gif = new ImageIcon(imgurl); // instanciiert ein neues image mit dem gif

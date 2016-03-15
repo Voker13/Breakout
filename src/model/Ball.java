@@ -12,6 +12,7 @@ public class Ball {
 	private double angle = 0; // the direction of the balls movement
 	private int panelWidth; 
 	private int panelHeight;
+	private double acceleration = 1.01;
 	
 	
 	/**
@@ -192,6 +193,20 @@ public class Ball {
 	 */
 	public int getSize() {
 		return size;
+	}
+
+	/**
+	 * @return the acceleration
+	 */
+	public double getAcceleration() {
+		return acceleration;
+	}
+
+	/**
+	 * @param acceleration the acceleration to set
+	 */
+	public void setAcceleration(double acceleration) {
+		this.acceleration = acceleration;
 	}
 	
 	

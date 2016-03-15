@@ -1,10 +1,30 @@
 package control;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.LinkedList;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import model.Ball;
 import model.Bar;
 import model.Brick;
 import model.Grid;
+import model.HighscoreList;
+import view.FinalFrame;
 import view.Frame;
+import view.ScoreFrame;
 
 public class Controller {
 
@@ -12,6 +32,9 @@ public class Controller {
 	private int optionpanelHeight = 40;
 	private int frameHeight = 600 + optionpanelHeight;
 	private int frameWidth = 400;
+	private int frameX = 300;
+	private int frameY = 100;
+	
 	private Ball ball;
 	private Bar bar;
 	private Grid grid;
@@ -19,41 +42,59 @@ public class Controller {
 	private int panelHeight = frameHeight-40;
 	private int lifes = 3;
 	private int level = 0;
-	private int maxLevel = 2;
+	private int maxLevel = 1;
 	private boolean running = false;
 	private Frame frame;
 	private GameThread thread;
 	private int score = 0;
 	private MusicThread backgroundMusic;
 	private boolean finish = false;
+	private FinalFrame finalFrame;
+	private ScoreFrame scoreFrame;
+	private HighscoreList highscoreList;
+	private File scorefile = new File("./src/scoreboard.score");
+	
 	
 	public Controller() {
 		
 	}
+	
 	/**
 	 * Initializes the game, adding a bar, a ball and the bricks to the field.
 	 */
-	public void initialize() {
+	public void initializeGame() {
 		bar = new Bar(panelWidth, panelHeight);
 		ball = new Ball(panelWidth, panelHeight);
 		grid = new Grid();
-		grid.fill(0);
+		grid.fill(2);
 		frame = new Frame(this);
 		thread = new GameThread(this);
 		thread.start();
 		backgroundMusic = new MusicThread();
-		backgroundMusic.start();
+//		backgroundMusic.start();
+		finalFrame = new FinalFrame(this);
+		highscoreList = new HighscoreList();
+		load();
+		scoreFrame = new ScoreFrame(this);
 	}
+	
 	/**
 	 * Stops the ball and resets the lives to 3.
 	 */
 	public void reset() {
+		grid.fill(2);
 		score = 0;
 		lifes = 3; 
 		level = 0;
+		ball.setSpeed(4);
 		running = false;
 		finish = false;
+		finalFrame.setVisible(false);
+		this.getFrame().requestFocus();
+		thread = new GameThread(this);
+		thread.start();
 	}
+	
 	/**
 	 * This method is called each tick to move the ball and check for any collisions.
 	 */
@@ -144,6 +185,7 @@ public class Controller {
 				if (brick.getHardiness() == 0) {
 					brick.setVisible(false);
 					score += brick.getScore();
+					ball.setSpeed(ball.getSpeed()*ball.getAcceleration());
 				}
 				if (brick2 != null) {
 					brick2.setAlpha(brick2.getAlpha() / 2);
@@ -151,12 +193,73 @@ public class Controller {
 					if (brick2.getHardiness() == 0) {
 						brick2.setVisible(false);
 						score += brick2.getScore();
+						ball.setSpeed(ball.getSpeed()*ball.getAcceleration());
 					}
 				}
 			}
 		}
 		
 		ball.setAngle(ball.getAngle() % 360);
+	}
+	//bin auch eben essen
+	public void save() {
+		try {
+			// make sure the file ends with .ocean
+			File selectedFile = scorefile;
+			// open File Stream
+			FileOutputStream os = new FileOutputStream(selectedFile);
+			// open object stream
+			ObjectOutputStream oos = new ObjectOutputStream(os);
+			// write the ocean to the file
+			oos.writeObject(highscoreList);
+			// close the stream
+			oos.close();
+			// inform user about success
+//			final JOptionPane optionPane = new JOptionPane();
+//			JOptionPane.showMessageDialog(optionPane, "Succesfully saved.", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+		} catch (Exception ex) {
+			// inform user about failed save process
+			ex.printStackTrace();
+			final JOptionPane optionPane = new JOptionPane();
+			JOptionPane.showMessageDialog(optionPane, "Failed to save.", "Save failed", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	public void load() {
+		try {
+			// make sure the file ends with .ocean
+			File selectedFile = scorefile;
+			// open File Stream
+			FileInputStream is = new FileInputStream(selectedFile);
+			// open object stream
+			ObjectInputStream ois = new ObjectInputStream(is);
+			// write the ocean to the file
+			highscoreList = (HighscoreList) ois.readObject();
+			// close the stream
+			ois.close();
+			// inform user about success
+//			final JOptionPane optionPane = new JOptionPane();
+//			JOptionPane.showMessageDialog(optionPane, "Succesfully saved.", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+		} catch (Exception ex) {
+			
+		}
+	}
+
+	public void doTransitionToFinish() {
+		
+		finalFrame.setVisible(true);
+		finalFrame.requestFocus();
+		finalFrame.getFinalScore().setText("Your final score: "+this.getScore());
+		thread.setRunning(false);
+		
+	}
+	
+	public void doTransitionToReset() {
+		finalFrame.setVisible(false);
+		frame.requestFocus();
+		reset();
 	}
 	
 	/**
@@ -215,6 +318,8 @@ public class Controller {
 		if (x < 0) {return x*(-1);}
 		return x;
 	}
+	
+	// Getter and Setter: ...
 	/**
 	 * Returns the optionpanel's height.
 	 * @return
@@ -428,6 +533,76 @@ public class Controller {
 	 */
 	public void setFinish(boolean finish) {
 		this.finish = finish;
+	}
+
+	/**
+	 * @return the frameX
+	 */
+	public int getFrameX() {
+		return frameX;
+	}
+
+	/**
+	 * @param frameX the frameX to set
+	 */
+	public void setFrameX(int frameX) {
+		this.frameX = frameX;
+	}
+
+	/**
+	 * @return the frameY
+	 */
+	public int getFrameY() {
+		return frameY;
+	}
+
+	/**
+	 * @param frameY the frameY to set
+	 */
+	public void setFrameY(int frameY) {
+		this.frameY = frameY;
+	}
+
+	/**
+	 * @return the finalFrame
+	 */
+	public FinalFrame getFinalFrame() {
+		return finalFrame;
+	}
+
+	/**
+	 * @param finalFrame the finalFrame to set
+	 */
+	public void setFinalFrame(FinalFrame finalFrame) {
+		this.finalFrame = finalFrame;
+	}
+
+	/**
+	 * @return the scoreFrame
+	 */
+	public ScoreFrame getScoreFrame() {
+		return scoreFrame;
+	}
+
+	/**
+	 * @param scoreFrame the scoreFrame to set
+	 */
+	public void setScoreFrame(ScoreFrame scoreFrame) {
+		this.scoreFrame = scoreFrame;
+	}
+
+	/**
+	 * @return the highscoreList
+	 */
+	public HighscoreList getHighscoreList() {
+		return highscoreList;
+	}
+
+	/**
+	 * @param highscoreList the highscoreList to set
+	 */
+	public void setHighscoreList(HighscoreList highscoreList) {
+		this.highscoreList = highscoreList;
 	}
 
 	
