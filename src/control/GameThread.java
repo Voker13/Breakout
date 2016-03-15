@@ -26,14 +26,18 @@ public class GameThread extends Thread {
 			
 			// setting the right coordinate to the ball and moves it
 			if (!controller.isRunning()) {
+				if (controller.getLifes()==0) {
+					controller.setFinish(true);
+				}
 				controller.getBall().setX(controller.getBar().getX() + controller.getBar().getWidth() / 2 - controller.getBall().getSize() / 2);
 				controller.getBall().setY(controller.getBar().getY() - controller.getBall().getSize());
 			} else {
-				// wenn man das level durchgespielt hat.... -->>>
+				// wenn man das level durchgespielt hat... -->>>
 				if (controller.getGrid().isEmpty()) {
 					controller.setRunning(false);
 //					controller.getBall().setSpeed(4);
 					controller.setLevel((controller.getLevel()+1));
+					//wenn man alle level durchgespielt hat... --->>>
 					if (controller.getLevel() >= controller.getMaxLevel()) {
 						controller.setLevel((controller.getLevel()-1));
 						controller.setFinish(true);

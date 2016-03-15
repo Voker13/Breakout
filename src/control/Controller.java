@@ -32,7 +32,7 @@ public class Controller {
 	private int panelHeight = frameHeight-40;
 	private int lifes = 3;
 	private int level = 0;
-	private int maxLevel = 1;
+	private int maxLevel = 2;
 	private boolean running = false;
 	private Frame frame;
 	private GameThread thread;
