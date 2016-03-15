@@ -56,7 +56,7 @@ public class Controller {
 		bar = new Bar(panelWidth, panelHeight);
 		ball = new Ball(panelWidth, panelHeight);
 		grid = new Grid();
-		grid.fill(2);
+		grid.fill(0);
 		frame = new Frame(this);
 		thread = new GameThread(this);
 		thread.start();
@@ -72,7 +72,7 @@ public class Controller {
 	 * Stops the ball and resets the lives to 3.
 	 */
 	public void reset() {
-		grid.fill(2);
+		grid.fill(0);
 		score = 0;
 		lifes = 3; 
 		level = 0;
