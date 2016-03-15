@@ -1,20 +1,10 @@
 package control;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.LinkedList;
-
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import model.Ball;
@@ -28,7 +18,7 @@ import view.ScoreFrame;
 
 public class Controller {
 
-	private String version = "1.0";
+	private String version = "1.2";
 	private int optionpanelHeight = 40;
 	private int frameHeight = 600 + optionpanelHeight;
 	private int frameWidth = 400;
