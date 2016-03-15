@@ -37,6 +37,7 @@ public class Controller {
 	private Frame frame;
 	private GameThread thread;
 	private int score = 0;
+	@SuppressWarnings("unused")
 	private MusicThread backgroundMusic;
 	private boolean finish = false;
 	private FinalFrame finalFrame;

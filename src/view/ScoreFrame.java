@@ -2,10 +2,6 @@ package view;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,6 +11,10 @@ import control.Controller;
 
 public class ScoreFrame extends JFrame{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3672278021378873415L;
 	private Controller controller;
 	private JPanel scorePanel;
 	private JLabel scoreTitle;

@@ -3,6 +3,10 @@ package model;
 import java.io.Serializable;
 
 public class HighscoreEntry implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2053258604574250444L;
 	private int score;
 	private String name;
 	

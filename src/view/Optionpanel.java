@@ -12,6 +12,11 @@ import control.Controller;
 public class Optionpanel extends JPanel {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5062635349747882628L;
+
+	/**
 	 * This objects controller
 	 */
 	private Controller controller;

@@ -2,14 +2,12 @@ package view;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.sql.Time;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import control.Controller;
-import control.GameThread;
 import control.Main;
 import control.Mouselistener;
 import control.Mousemotionlistener;
@@ -19,9 +17,9 @@ import model.Grid;
 
 public class Gamepanel extends JPanel {	
 	/**
-	 * This gamepanel's thread
+	 * 
 	 */
-	private GameThread thread;
+	private static final long serialVersionUID = -100041808732161989L;
 	/**
 	 * This gamepanel's controller
 	 */

@@ -7,6 +7,10 @@ import view.Gamepanel;
 
 public class Frame extends JFrame{
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2572923356452076926L;
+	/**
 	 * This frame's gamepanel
 	 */
 	private Gamepanel gamepanel;

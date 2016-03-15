@@ -4,11 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,7 +16,10 @@ import model.HighscoreEntry;
 
 public class FinalFrame extends JFrame{
 	
-	private Controller controller;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8504661962480472563L;
 	private int finalFrameWidth = 300;
 	private int finalFrameHeight = 195;
 	private int finalFrameX;
@@ -32,7 +30,6 @@ public class FinalFrame extends JFrame{
 	
 	public FinalFrame(Controller controller) {
 		
-		this.controller = controller;
 		Font font = new Font("name", 0, 22);
 		finalFrameX = controller.getFrameX()+(controller.getFrameWidth()/2)-(finalFrameWidth/2);
 		finalFrameY = controller.getFrameY()+(controller.getFrameHeight()/3)-(finalFrameHeight/2);

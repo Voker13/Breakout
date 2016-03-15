@@ -2,9 +2,12 @@ package model;
 
 import java.util.LinkedList;
 
-import javax.swing.JOptionPane;
-
 public class HighscoreList extends LinkedList<HighscoreEntry>{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2149862055543169249L;
 
 	public HighscoreList() {
 		
